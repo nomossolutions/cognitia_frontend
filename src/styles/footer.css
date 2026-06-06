@@ -1,0 +1,27 @@
+:root {
+    --edu-soft-white: #f8f9f7;
+    --edu-lightest: #dad7cd;
+    --edu-light: #a3b18a;
+    --edu-mid: #588157;
+    --edu-dark: #3a5a40;
+    --edu-darkest: #344e41;
+    --edu-accent: #e76f51;
+    --edu-accent-light: #f4a261;
+}
+
+#footerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 2px solid gray;
+    padding: 5px;
+}
+
+#recomendacionesContainer {
+    border-bottom: 2px solid gray;
+}
+
+#legalContainer{
+    color: aliceblue;
+    text-align: center;
+}

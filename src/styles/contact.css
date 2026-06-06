@@ -1,0 +1,11 @@
+/* Contact page ahora usa las mismas variables CSS que home.css */
+
+.formGroup {
+    background-color: transparent;
+}
+
+/* Estilos de focus para inputs */
+.formGroup input:focus,
+.formGroup textarea:focus {
+    box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.1);
+}
