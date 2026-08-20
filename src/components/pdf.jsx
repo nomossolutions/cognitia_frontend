@@ -1,429 +1,688 @@
-import React from 'react';
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import React from "react";
+import {
+  Document,
+  Page,
+  View,
+  Text,
+  StyleSheet,
+  PDFViewer,
+  PDFDownloadLink as PDFDownloadLinkBase,
+} from "@react-pdf/renderer";
 
-/* =======================
-   🎨 STYLES
-======================= */
+const fechaActual = new Date().toLocaleDateString("es-AR", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+});
+
+const safeArray = (value) => (Array.isArray(value) ? value : []);
+
+const str = (value) =>
+  value === undefined || value === null || value === ""
+    ? "-"
+    : String(value);
+
+/* ============================================================
+    ESTILOS COGNITIA (VERDES + NARANJAS)
+============================================================ */
+
 const styles = StyleSheet.create({
   page: {
-    padding: 40,
-    fontFamily: 'Helvetica',
-    backgroundColor: '#ffffff', // blanco (fondo general)
+    paddingTop: 36,
+    paddingBottom: 48,
+    paddingHorizontal: 36,
+    fontSize: 9,
+    color: "#3a5a40",
+    fontFamily: "Helvetica",
+    backgroundColor: "#ffffff",
   },
 
+  /* HEADER */
   header: {
-    marginBottom: 20,
-    paddingBottom: 12,
-    borderBottomWidth: 3,
-    borderBottomColor: '#e76f51', // --edu-accent (naranja/rojo coral)
-  },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#344e41', // --edu-darkest (verde muy oscuro)
-  },
-  headerSubtitle: {
-    fontSize: 12,
-    color: '#588157', // --edu-mid (verde medio)
-    marginTop: 6,
-    letterSpacing: 0.5,
-    textTransform: 'uppercase',
-  },
-
-  mainTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#344e41', // --edu-darkest (verde muy oscuro)
-    marginTop: 10,
-    marginBottom: 10,
-    paddingBottom: 8,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
     borderBottomWidth: 2,
-    borderBottomColor: '#e76f51', // --edu-accent
+    borderBottomColor: "#e76f51",
+    paddingBottom: 14,
+    marginBottom: 16,
   },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#f4a261', // --edu-accent-light (naranja claro)
-    marginTop: 16,
-    marginBottom: 10,
+  brand: {
+    fontSize: 9,
+    fontWeight: "bold",
+    color: "#e76f51",
+    letterSpacing: 2.5,
+    textTransform: "uppercase",
+    marginBottom: 3,
   },
-  subsectionTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#588157', // --edu-mid (verde medio)
-    marginTop: 12,
-    marginBottom: 8,
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#344e41",
+    letterSpacing: -0.5,
   },
-  
-  subsubsectionTitle: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#a3b18a', // --edu-light (verde claro)
-    marginTop: 10,
-    marginBottom: 6,
-  },
-
-  text: {
-    fontSize: 13,
-    lineHeight: 1.7,
-    color: '#3a5a40', // --edu-dark (verde oscuro)
-    marginBottom: 8,
-  },
-
-  textBlock: {
-    marginBottom: 6,
-  },
-  
-  strongText: {
-    fontSize: 13,
-    fontWeight: 'bold',
-    color: '#f4a261', // --edu-accent-light (naranja claro)
-    lineHeight: 1.7,
-  },
-
-  exerciseItem: {
-    padding: 10,
-    marginBottom: 10,
-    marginTop: 6,
-    backgroundColor: '#f8f9f7', // --edu-soft-white (blanco suave)
-    borderLeftWidth: 4,
-    borderLeftColor: '#e76f51', // --edu-accent
-    borderRadius: 3,
-  },
-  exerciseName: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#588157', // --edu-mid (verde medio)
-    marginBottom: 4,
-  },
-  exerciseDetails: {
-    fontSize: 12,
-    color: '#a3b18a', // --edu-light (verde claro)
-    fontStyle: 'italic',
+  subtitle: {
+    fontSize: 10,
+    color: "#588157",
     marginTop: 2,
   },
-
-  listItem: {
-    fontSize: 13,
-    marginBottom: 6,
-    marginLeft: 12,
-    color: '#3a5a40', // --edu-dark (verde oscuro)
-    lineHeight: 1.6,
-  },
-  
-  listMarker: {
-    color: '#e76f51', // --edu-accent
-  },
-
-  table: {
-    marginTop: 12,
-    marginBottom: 18,
+  headerRight: {
+    textAlign: "right",
+    backgroundColor: "#f8f9f7",
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    borderRadius: 6,
     borderWidth: 1,
-    borderColor: '#dad7cd', // --edu-lightest (gris claro)
+    borderColor: "#dad7cd",
+  },
+  headerRightLabel: {
+    fontSize: 7,
+    fontWeight: "bold",
+    color: "#588157",
+    letterSpacing: 1,
+    textTransform: "uppercase",
+    marginBottom: 2,
+  },
+  headerRightValue: {
+    fontSize: 9,
+    fontWeight: "semibold",
+    color: "#344e41",
+  },
+
+  /* HERO CARD */
+  heroCard: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 18,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    backgroundColor: "#344e41",
+    borderRadius: 8,
+  },
+  heroLabel: {
+    fontSize: 7.5,
+    color: "#e76f51",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: 1.5,
+  },
+  heroTitle: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#ffffff",
+    marginTop: 2,
+  },
+  heroInfo: {
+    flexDirection: "row",
+    gap: 16,
+    textAlign: "right",
+  },
+  infoLabel: {
+    fontSize: 7,
+    color: "#a3b18a",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
+  },
+  infoValue: {
+    marginTop: 2,
+    fontSize: 9.5,
+    fontWeight: "bold",
+    color: "#f8f9f7",
+  },
+
+  /* SECCIONES Y TITULOS */
+  section: {
+    marginBottom: 16,
+  },
+  sectionTitle: {
+    fontSize: 10,
+    fontWeight: "bold",
+    color: "#344e41",
+    textTransform: "uppercase",
+    letterSpacing: 1,
+    paddingBottom: 4,
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#dad7cd",
+  },
+
+  /* INSTRUCCIONES */
+  instruccionesBox: {
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    borderWidth: 1,
+    backgroundColor: "#f8f9f7",
+    borderColor: "#dad7cd",
+    marginBottom: 16,
+  },
+  instruccionesLabel: {
+    fontSize: 7.5,
+    fontWeight: "bold",
+    color: "#588157",
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
+    marginBottom: 4,
+  },
+  instruccionesText: {
+    fontSize: 9,
+    lineHeight: 1.45,
+    color: "#3a5a40",
+  },
+
+  /* EJERCICIO CARD */
+  ejercicioCard: {
+    marginBottom: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: "#e76f51",
+    backgroundColor: "#ffffff",
+    borderLeftWidth: 4,
+    borderLeftColor: "#e76f51",
+  },
+  ejercicioHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    marginBottom: 6,
+  },
+  ejercicioNumero: {
+    backgroundColor: "#e76f51",
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontSize: 8,
+    paddingVertical: 2,
+    paddingHorizontal: 6,
     borderRadius: 4,
-    overflow: 'hidden',
   },
-  tableRow: {
-    flexDirection: 'row',
+  ejercicioTipo: {
+    fontSize: 7,
+    color: "#588157",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: 0.5,
   },
-  tableRowEven: {
-    backgroundColor: '#f8f9f7', // --edu-soft-white
-  },
-  tableHeader: {
-    fontSize: 11,
-    fontWeight: 'bold',
-    backgroundColor: '#e76f51', // --edu-accent
-    color: '#f8f9f7', // --edu-soft-white
-    paddingVertical: 8,
-    paddingHorizontal: 8,
-    flex: 1,
-  },
-  tableCell: {
-    fontSize: 11,
-    paddingVertical: 8,
-    paddingHorizontal: 8,
-    flex: 1,
-    color: '#3a5a40', // --edu-dark
-    borderTopWidth: 1,
-    borderTopColor: '#dad7cd', // --edu-lightest
+  ejercicioEnunciado: {
+    fontSize: 9.5,
+    fontWeight: "bold",
+    color: "#344e41",
+    marginBottom: 8,
+    lineHeight: 1.4,
   },
 
-  divider: {
-    height: 2,
-    backgroundColor: '#dad7cd', // --edu-lightest
-    marginVertical: 14,
+  /* OPCIONES */
+  opcionesContainer: {
+    marginBottom: 8,
   },
-
-  codeBlock: {
-    padding: 10,
-    marginVertical: 8,
-    backgroundColor: '#f8f9f7', // --edu-soft-white
-    borderLeftWidth: 4,
-    borderLeftColor: '#e76f51', // --edu-accent
+  opcionItem: {
+    flexDirection: "row",
+    gap: 6,
+    marginBottom: 3,
+    fontSize: 9,
+    color: "#3a5a40",
+  },
+  opcionBullet: {
+    color: "#f4a261",
+    fontWeight: "bold",
+  },
+  opcionCorrecta: {
+    backgroundColor: "#f0fdf4",
+    paddingVertical: 2,
+    paddingHorizontal: 4,
     borderRadius: 3,
   },
-  codeText: {
-    fontSize: 11,
-    color: '#344e41', // --edu-darkest
-    fontFamily: 'Courier',
-    lineHeight: 1.5,
+
+  /* RESPUESTA Y EXPLICACION */
+  respuestaBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    marginTop: 6,
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    backgroundColor: "#f0fdf4",
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: "#a3b18a",
   },
-  
-  blockquote: {
-    padding: 10,
-    marginVertical: 8,
-    backgroundColor: '#dad7cd', // --edu-lightest (ligeramente más claro)
-    borderLeftWidth: 4,
-    borderLeftColor: '#f4a261', // --edu-accent-light
-    borderRadius: 3,
+  respuestaLabel: {
+    fontSize: 7.5,
+    fontWeight: "bold",
+    color: "#588157",
+    textTransform: "uppercase",
   },
-  blockquoteText: {
-    fontSize: 12,
-    color: '#588157', // --edu-mid
-    fontStyle: 'italic',
-    lineHeight: 1.6,
+  respuestaValue: {
+    fontSize: 9.5,
+    fontWeight: "bold",
+    color: "#344e41",
+  },
+  explicacionBox: {
+    marginTop: 6,
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    backgroundColor: "#fff7ed",
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: "#fed7aa",
+  },
+  explicacionLabel: {
+    fontSize: 7.5,
+    fontWeight: "bold",
+    color: "#c2410c",
+    textTransform: "uppercase",
+    marginBottom: 2,
+  },
+  explicacionText: {
+    fontSize: 8.5,
+    lineHeight: 1.4,
+    color: "#334155",
   },
 
+  /* FOOTER */
   footer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 20,
     left: 36,
     right: 36,
     borderTopWidth: 1,
-    borderTopColor: '#dad7cd', // --edu-lightest
+    borderTopColor: "#dad7cd",
     paddingTop: 8,
-    fontSize: 9,
-    color: '#a3b18a', // --edu-light
-    textAlign: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    color: "#a3b18a",
+    fontSize: 7.5,
+  },
+  footerBrand: {
+    fontWeight: "bold",
+    color: "#588157",
+    letterSpacing: 1,
   },
 });
 
-/* =======================
-   🧹 CLEAN MARKDOWN
-======================= */
-const clean = (text = '') =>
-  text
-    .replace(/\*\*/g, '')
-    .replace(/\*/g, '')
-    .replace(/`/g, '')
-    .replace(/~/g, '')
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .trim();
+/* ============================================================
+    COMPONENTES AUXILIARES
+============================================================ */
 
-/* =======================
-   🔍 HELPERS
-======================= */
-const isExerciseDetail = (text) =>
-  /serie|repeticion|descanso|tiempo|set|rep|seg|kg/i.test(text);
+const InfoBlock = ({ label, value }) => (
+  <View>
+    <Text style={styles.infoLabel}>{label}</Text>
+    <Text style={styles.infoValue}>{str(value)}</Text>
+  </View>
+);
 
-const isExerciseTitle = (text) =>
-  text.length < 60 && !text.includes(':');
+/* ============================================================
+    BLOQUE DE EJERCICIO
+============================================================ */
 
-/* =======================
-   🧠 PARSER
-======================= */
-const parseMarkdown = (rutina) => {
-  const lines = rutina.split('\n').filter((l) => l.trim());
+const EjercicioCard = ({ ejercicio }) => (
+  <View style={styles.ejercicioCard} wrap={false}>
+    <View style={styles.ejercicioHeader}>
+      <Text style={styles.ejercicioNumero}>{str(ejercicio.numero)}</Text>
+      <Text style={styles.ejercicioTipo}>
+        {str(ejercicio.tipo || "opcion_multiple")}
+      </Text>
+    </View>
+    <Text style={styles.ejercicioEnunciado}>{str(ejercicio.enunciado)}</Text>
 
-  const content = [];
-  let tableRows = [];
-  let inTable = false;
+    {safeArray(ejercicio.opciones).length > 0 && (
+      <View style={styles.opcionesContainer}>
+        {ejercicio.opciones.map((opcion, idx) => {
+          const esCorrecta = opcion.startsWith(ejercicio.respuestaCorrecta);
+          return (
+            <View
+              key={idx}
+              style={[
+                styles.opcionItem,
+                esCorrecta && styles.opcionCorrecta,
+              ]}
+            >
+              <Text style={styles.opcionBullet}>•</Text>
+              <Text>{str(opcion)}</Text>
+            </View>
+          );
+        })}
+      </View>
+    )}
 
-  lines.forEach((line) => {
-    const trimmed = line.trim();
+    {ejercicio.respuestaCorrecta && (
+      <View style={styles.respuestaBox}>
+        <Text style={styles.respuestaLabel}>Respuesta:</Text>
+        <Text style={styles.respuestaValue}>
+          {str(ejercicio.respuestaCorrecta)}
+        </Text>
+      </View>
+    )}
 
-    // ✅ DIVIDER (--- *** ___)
-    if (/^[-*_]{3,}$/.test(trimmed)) {
-      if (inTable) {
-        content.push({ type: 'table', rows: tableRows });
-        tableRows = [];
-        inTable = false;
-      }
-      content.push({ type: 'divider' });
-      return;
-    }
+    {ejercicio.explicacion && (
+      <View style={styles.explicacionBox}>
+        <Text style={styles.explicacionLabel}>Explicación</Text>
+        <Text style={styles.explicacionText}>{str(ejercicio.explicacion)}</Text>
+      </View>
+    )}
+  </View>
+);
 
-    // TABLE
-    if (/^\|.*\|$/.test(trimmed)) {
-      const cells = trimmed
-        .split('|')
-        .slice(1, -1)
-        .map((c) => clean(c));
+/* ============================================================
+    DOCUMENTO PDF
+============================================================ */
 
-      if (!cells.every((c) => /^:?-+:?$/.test(c))) {
-        inTable = true;
-        tableRows.push(cells);
-      }
-      return;
-    }
+export const ExerciseDocument = ({ ejercicio, titulo = "Ejercicios" }) => {
+  if (!ejercicio) return null;
 
-    // CLOSE TABLE
-    if (inTable) {
-      content.push({ type: 'table', rows: tableRows });
-      tableRows = [];
-      inTable = false;
-    }
+  const ejercicios = safeArray(ejercicio.ejercicios);
 
-    // HEADINGS
-    const h = trimmed.match(/^(#{1,6})\s+(.+)$/);
-    if (h) {
-      content.push({
-        type: 'heading',
-        level: h[1].length,
-        text: clean(h[2]),
-      });
-      return;
-    }
-
-    // LIST
-    const list = trimmed.match(/^[-*]\s+(.+)$/);
-    if (list) {
-      content.push({ type: 'list', text: clean(list[1]) });
-      return;
-    }
-
-    // TEXT
-    content.push({ type: 'text', text: clean(trimmed) });
-  });
-
-  if (inTable) {
-    content.push({ type: 'table', rows: tableRows });
-  }
-
-  return content;
-};
-
-/* =======================
-   🎯 RENDER
-======================= */
-const renderItem = (item, index) => {
-  if (!item) return null;
-
-  if (item.type === 'divider') {
-    return <View key={index} style={styles.divider} />;
-  }
-
-  if (item.type === 'heading') {
-    if (item.level === 1) {
-      return <Text key={index} style={styles.mainTitle}>{item.text}</Text>;
-    }
-
-    if (item.level === 2) {
-      return <Text key={index} style={styles.sectionTitle}>{item.text}</Text>;
-    }
-
-    if (item.level === 3) {
-      // Si es un título de ejercicio, usar tarjeta especial
-      if (isExerciseTitle(item.text)) {
-        return (
-          <View key={index} wrap={false} style={styles.exerciseItem}>
-            <Text style={styles.exerciseName}>{item.text}</Text>
+  return (
+    <Document title={`${titulo} - Cognitia`}>
+      <Page size="A4" style={styles.page}>
+        {/* HEADER */}
+        <View style={styles.header}>
+          <View>
+            <Text style={styles.brand}>COGNITIA</Text>
+            <Text style={styles.title}>{str(ejercicio.titulo || titulo)}</Text>
+            <Text style={styles.subtitle}>Ejercicios generados con IA</Text>
           </View>
-        );
-      }
-      return <Text key={index} style={styles.subsectionTitle}>{item.text}</Text>;
-    }
-
-    // H4 y siguientes en púrpura
-    return <Text key={index} style={styles.subsubsectionTitle}>{item.text}</Text>;
-  }
-
-  if (item.type === 'list') {
-    return (
-      <View 
-        key={index} 
-        wrap={false}
-        style={{ flexDirection: 'row', marginBottom: 6, marginLeft: 12 }}
-      >
-        <Text style={{ color: '#e76f51', marginRight: 6 }}>•</Text>
-        <Text style={styles.listItem}>{item.text}</Text>
-      </View>
-    );
-  }
-
-  if (item.type === 'text') {
-    if (isExerciseDetail(item.text)) {
-      return (
-        <View 
-          key={index} 
-          wrap={false}
-          style={{ 
-            paddingVertical: 4, 
-            paddingHorizontal: 10,
-            marginBottom: 5,
-            marginLeft: 10,
-          }}
-        >
-          <Text style={styles.exerciseDetails}>
-            {item.text}
-          </Text>
+          <View style={styles.headerRight}>
+            <Text style={styles.headerRightLabel}>FECHA</Text>
+            <Text style={styles.headerRightValue}>{fechaActual}</Text>
+          </View>
         </View>
-      );
-    }
 
-    return (
-      <View key={index} wrap={false} style={styles.textBlock}>
-        <Text style={styles.text}>{item.text}</Text>
-      </View>
-    );
-  }
+        {/* HERO CARD */}
+        <View style={styles.heroCard}>
+          <View>
+            <Text style={styles.heroLabel}>Materia</Text>
+            <Text style={styles.heroTitle}>{str(ejercicio.materia)}</Text>
+          </View>
+          <View style={styles.heroInfo}>
+            <InfoBlock label="Tema" value={ejercicio.tema} />
+            <InfoBlock label="Nivel" value={ejercicio.nivel} />
+            <InfoBlock label="Cantidad" value={ejercicios.length} />
+          </View>
+        </View>
 
-  if (item.type === 'table') {
-    return (
-      <View key={index} style={styles.table}>
-        {item.rows.map((row, rIdx) => (
-          <View
-            key={rIdx}
-            style={[
-              styles.tableRow,
-              rIdx % 2 === 1 && styles.tableRowEven,
-            ]}
-          >
-            {row.map((cell, cIdx) => (
-              <Text
-                key={cIdx}
-                style={rIdx === 0 ? styles.tableHeader : styles.tableCell}
-              >
-                {cell}
-              </Text>
+        {/* INSTRUCCIONES */}
+        {ejercicio.instrucciones && (
+          <View style={styles.instruccionesBox} wrap={false}>
+            <Text style={styles.instruccionesLabel}>Instrucciones</Text>
+            <Text style={styles.instruccionesText}>
+              {str(ejercicio.instrucciones)}
+            </Text>
+          </View>
+        )}
+
+        {/* EJERCICIOS */}
+        {ejercicios.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Ejercicios</Text>
+            {ejercicios.map((ej, index) => (
+              <EjercicioCard key={index} ejercicio={ej} />
             ))}
           </View>
-        ))}
-      </View>
+        )}
+
+        {/* FOOTER */}
+        <View style={styles.footer} fixed>
+          <Text style={styles.footerBrand}>COGNITIA</Text>
+          <Text>© 2026 Cognitia - Ejercicios generados con IA</Text>
+        </View>
+      </Page>
+    </Document>
+  );
+};
+
+/* ============================================================
+    VISTA PREVIA (PDFViewer)
+============================================================ */
+
+export const PDFContent = ({
+  ejercicio,
+  titulo = "Ejercicios",
+  preview = false,
+}) => {
+  if (!ejercicio) return null;
+
+  return (
+    <PDFViewer
+      showToolbar={false}
+      style={{
+        width: "100%",
+        height: preview ? "100%" : 500,
+        border: "none",
+        borderRadius: 8,
+      }}
+    >
+      <ExerciseDocument ejercicio={ejercicio} titulo={titulo} />
+    </PDFViewer>
+  );
+};
+
+/* ============================================================
+    DESCARGAR PDF
+============================================================ */
+
+export const PDFDownloadLink = ({
+  ejercicio,
+  titulo = "Ejercicios",
+  className = "",
+}) => {
+  if (!ejercicio) return null;
+
+  const safeTitulo = (titulo || "Ejercicios")
+    .trim()
+    .replace(/\s+/g, "_")
+    .replace(/[^a-zA-Z0-9_-]/g, "");
+
+  const formattedDate = new Date().toISOString().split("T")[0];
+
+  return (
+    <PDFDownloadLinkBase
+      document={<ExerciseDocument ejercicio={ejercicio} titulo={titulo} />}
+      fileName={`${safeTitulo}_${formattedDate}.pdf`}
+      className={`flex items-center gap-2 bg-[#e76f51] hover:bg-[#d35a3e] text-white font-bold py-2 px-4 rounded-lg transition-colors ${className}`}
+    >
+      <span className="text-sm">Descargar PDF</span>
+    </PDFDownloadLinkBase>
+  );
+};
+
+/* ============================================================
+    VISUALIZADOR WEB DE EJERCICIOS (JSON)
+============================================================ */
+
+const tipoLabels = {
+  opcion_multiple: 'Opción Múltiple',
+  verdadero_falso: 'Verdadero o Falso',
+  completar: 'Completar',
+  respuesta_libre: 'Respuesta Libre',
+};
+
+const ExerciseContent = ({ ejercicio: ej }) => {
+  if (!ej) return null;
+
+  // OPCIÓN MÚLTIPLE
+  if (ej.tipo === 'opcion_multiple') {
+    return (
+      <>
+        {safeArray(ej.opciones).length > 0 && (
+          <div className="space-y-1 mb-3">
+            {ej.opciones.map((opcion, idx) => {
+              const esCorrecta = opcion.startsWith(ej.respuestaCorrecta);
+              return (
+                <div
+                  key={idx}
+                  className="flex items-start gap-2 text-sm px-2 py-1 rounded"
+                  style={{
+                    backgroundColor: esCorrecta ? '#f0fdf4' : 'transparent',
+                    color: '#3a5a40',
+                  }}
+                >
+                  <span style={{ color: '#f4a261' }}>•</span>
+                  <span>{str(opcion)}</span>
+                </div>
+              );
+            })}
+          </div>
+        )}
+        {ej.respuestaCorrecta && (
+          <div
+            className="flex items-center gap-2 px-3 py-2 rounded text-sm mb-2"
+            style={{ backgroundColor: '#f0fdf4', border: '1px solid #a3b18a' }}
+          >
+            <span className="font-bold" style={{ color: '#588157' }}>Respuesta:</span>
+            <span className="font-bold" style={{ color: '#344e41' }}>{str(ej.respuestaCorrecta)}</span>
+          </div>
+        )}
+      </>
+    );
+  }
+
+  // VERDADERO O FALSO
+  if (ej.tipo === 'verdadero_falso') {
+    const esVerdadero = ej.respuestaCorrecta?.toLowerCase() === 'verdadero';
+    return (
+      <div className="flex gap-3 mb-3">
+        <div
+          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold"
+          style={{
+            backgroundColor: esVerdadero ? '#f0fdf4' : '#f8f9f7',
+            border: `2px solid ${esVerdadero ? '#22c55e' : '#dad7cd'}`,
+            color: esVerdadero ? '#166534' : '#6b7280',
+          }}
+        >
+          ✅ Verdadero
+        </div>
+        <div
+          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold"
+          style={{
+            backgroundColor: !esVerdadero ? '#fef2f2' : '#f8f9f7',
+            border: `2px solid ${!esVerdadero ? '#ef4444' : '#dad7cd'}`,
+            color: !esVerdadero ? '#991b1b' : '#6b7280',
+          }}
+        >
+          ❌ Falso
+        </div>
+      </div>
+    );
+  }
+
+  // COMPLETAR
+  if (ej.tipo === 'completar') {
+    return (
+      <div
+        className="px-3 py-2 rounded text-sm mb-2"
+        style={{ backgroundColor: '#f0fdf4', border: '1px solid #a3b18a' }}
+      >
+        <span className="font-bold" style={{ color: '#588157' }}>Respuesta: </span>
+        <span className="font-bold" style={{ color: '#344e41' }}>{str(ej.respuestaCorrecta)}</span>
+      </div>
+    );
+  }
+
+  // RESPUESTA LIBRE
+  if (ej.tipo === 'respuesta_libre') {
+    return (
+      <div
+        className="px-3 py-2 rounded text-sm mb-2"
+        style={{ backgroundColor: '#eff6ff', border: '1px solid #93c5fd' }}
+      >
+        <p className="font-bold text-xs uppercase mb-1" style={{ color: '#1d4ed8' }}>Respuesta esperada</p>
+        <p style={{ color: '#1e3a5f' }}>{str(ej.respuestaEsperada)}</p>
+      </div>
     );
   }
 
   return null;
 };
 
-/* =======================
-   📄 MAIN COMPONENT
-======================= */
-export const MyDocumentPDF = ({ rutina }) => {
-  const content = parseMarkdown(rutina);
+export const ExerciseViewer = ({ ejercicio }) => {
+  if (!ejercicio) return null;
+
+  const ejercicios = safeArray(ejercicio.ejercicios);
 
   return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        
-        {/* HEADER */}
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>Plan de Entrenamiento</Text>
-          <Text style={styles.headerSubtitle}>Cognitia</Text>
-        </View>
+    <div className="space-y-4">
+      {/* Header info */}
+      <div className="p-4 rounded-lg" style={{ backgroundColor: '#344e41' }}>
+        <div className="flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-widest font-bold" style={{ color: '#e76f51' }}>
+              {str(ejercicio.materia)}
+            </p>
+            <h3 className="text-lg font-bold text-white mt-1">{str(ejercicio.titulo)}</h3>
+          </div>
+          <div className="flex gap-4 text-right">
+            <div>
+              <p className="text-xs uppercase tracking-widest font-bold" style={{ color: '#a3b18a' }}>Tema</p>
+              <p className="text-sm font-bold text-white">{str(ejercicio.tema)}</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-widest font-bold" style={{ color: '#a3b18a' }}>Nivel</p>
+              <p className="text-sm font-bold text-white">{str(ejercicio.nivel)}</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-widest font-bold" style={{ color: '#a3b18a' }}>Tipo</p>
+              <p className="text-sm font-bold text-white">{tipoLabels[ejercicio.tipoEjercicio] || 'Opción Múltiple'}</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        {/* CONTENT */}
-        <View>
-          {content.map((item, index) => renderItem(item, index))}
-        </View>
+      {/* Instrucciones */}
+      {ejercicio.instrucciones && (
+        <div className="p-4 rounded-lg border" style={{ backgroundColor: '#f8f9f7', borderColor: '#dad7cd' }}>
+          <p className="text-xs uppercase tracking-widest font-bold mb-2" style={{ color: '#588157' }}>
+            Instrucciones
+          </p>
+          <p className="text-sm" style={{ color: '#3a5a40' }}>{str(ejercicio.instrucciones)}</p>
+        </div>
+      )}
 
-        {/* FOOTER */}
-        <View style={styles.footer}>
-          <Text>© 2026 Cognitia - Rutina generada con IA</Text>
-          <Text>Consulta a un profesional antes de entrenar</Text>
-        </View>
+      {/* Ejercicios */}
+      {ejercicios.map((ej, index) => (
+        <div
+          key={index}
+          className="p-4 rounded-lg border-l-4"
+          style={{
+            backgroundColor: '#ffffff',
+            borderColor: '#e76f51',
+            border: '1px solid #e76f51',
+            borderLeftWidth: '4px',
+          }}
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <span
+              className="px-2 py-1 rounded text-xs font-bold text-white"
+              style={{ backgroundColor: '#e76f51' }}
+            >
+              {ej.numero}
+            </span>
+            <span className="text-xs uppercase tracking-widest font-bold" style={{ color: '#588157' }}>
+              {tipoLabels[ej.tipo] || str(ej.tipo)}
+            </span>
+          </div>
+          
+          <p className="text-sm font-bold mb-3" style={{ color: '#344e41' }}>
+            {str(ej.enunciado)}
+          </p>
 
-      </Page>
-    </Document>
+          <ExerciseContent ejercicio={ej} />
+
+          {ej.explicacion && (
+            <div
+              className="px-3 py-2 rounded text-sm"
+              style={{ backgroundColor: '#fff7ed', border: '1px solid #fed7aa' }}
+            >
+              <p className="font-bold text-xs uppercase mb-1" style={{ color: '#c2410c' }}>Explicación</p>
+              <p style={{ color: '#334155' }}>{str(ej.explicacion)}</p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
   );
 };

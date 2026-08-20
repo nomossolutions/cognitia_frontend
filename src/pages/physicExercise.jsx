@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { PhysicExerciseIA } from '../helpers/configIa'
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
-import { MyDocumentPDF } from '../components/pdf';
+import { ExerciseDocument, PDFContent, ExerciseViewer } from '../components/pdf';
 import { HiBolt, HiSparkles, HiUserGroup, HiAcademicCap, HiBuildingLibrary, HiInformationCircle } from 'react-icons/hi2';
 import '../styles/exercises.css';
 import '../styles/home.css';
 
 export const PhysicExercise = () => {
 
-  const [ejercicios, setEjercicios] = useState('');
+  const [ejercicios, setEjercicios] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [nivelSeleccionado, setNivelSeleccionado] = useState('Secundaria');
+  const [showPdfPreview, setShowPdfPreview] = useState(false);
 
   async function presion(e) {
     e.preventDefault();
@@ -21,6 +20,7 @@ export const PhysicExercise = () => {
     const mensaje = {
       tema: e.target.tema.value,
       cantidad: e.target.cantidad.value,
+      tipoEjercicio: e.target.tipoEjercicio.value,
       grado: nivelSeleccionado,
     }
     const respuesta = await PhysicExerciseIA(mensaje);
@@ -106,6 +106,19 @@ export const PhysicExercise = () => {
                 Máximo: 100 ejercicios por solicitud
               </p>
             </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="tipoEjercicio" className="text-sm font-medium" style={{color: 'var(--edu-darkest)'}}>Tipo de Ejercicio</label>
+              <select 
+                id="tipoEjercicio"
+                className="w-full px-4 py-3 border-none rounded-xl focus:outline-none focus:ring-2 transition-all text-sm sm:text-base"
+                style={{backgroundColor: 'rgba(74, 102, 77, 0.5)', color: 'var(--edu-darkest)'}}
+              >
+                <option value="opcion_multiple">Opción Múltiple</option>
+                <option value="verdadero_falso">Verdadero o Falso</option>
+                <option value="completar">Completar Espacios</option>
+                <option value="respuesta_libre">Respuesta Libre</option>
+              </select>
+            </div>
           </div>
 
           <div className="mt-4">
@@ -125,8 +138,8 @@ export const PhysicExercise = () => {
           </div>
         </form>
         
-        <section className="flex-1 p-6 sm:p-8 overflow-y-auto" style={{backgroundColor: 'var(--edu-soft-white)'}}>
-          <div className="max-w-4xl mx-auto flex flex-col gap-6">
+        <section className="flex-1 p-6 sm:p-8 overflow-hidden" style={{backgroundColor: 'var(--edu-soft-white)', height: '100vh'}}>
+          <div className="max-w-4xl mx-auto flex flex-col gap-6 h-full overflow-y-auto pr-2">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-2" style={{backgroundColor: 'rgba(231, 111, 81, 0.1)', color: 'var(--edu-accent)'}}>
@@ -136,7 +149,7 @@ export const PhysicExercise = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-soft-xl hover:shadow-float transition-all duration-300 border-none">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-soft-xl hover:shadow-float transition-all duration-300 border-none flex flex-col" style={{minHeight: ejercicios ? 'auto' : '400px'}}>
               <div className="flex items-center gap-3 mb-6">
                 <HiBolt className="w-6 h-6" style={{color: 'var(--edu-mid)'}} />
                 <h3 className="text-lg font-bold" style={{color: 'var(--edu-darkest)'}}>Contenido Generado</h3>
@@ -152,35 +165,46 @@ export const PhysicExercise = () => {
                   </p>
                   <p className="text-sm mt-2" style={{color: 'var(--edu-mid)'}}>Esto puede tomar unos segundos</p>
                 </div>
-              ) : (
-                <div className="prose max-w-none">
-                  {ejercicios ? (
-                    <>
-                      <div className="text-sm sm:text-base leading-relaxed" style={{color: 'var(--edu-dark)'}}>
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                          {ejercicios}
-                        </ReactMarkdown>
-                      </div>
+              ) : ejercicios ? (
+                <>
+                  {/* PESTAÑAS */}
+                  <div className="flex gap-2 mb-4">
+                    <button
+                      onClick={() => setShowPdfPreview(false)}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer transition-all duration-300 text-sm font-medium ${
+                        !showPdfPreview
+                          ? 'text-white shadow-lg'
+                          : 'border text-[#588157] hover:text-[#344e41]'
+                      }`}
+                      style={!showPdfPreview ? {backgroundColor: '#344e41'} : {borderColor: '#dad7cd'}}
+                    >
+                      Ejercicios
+                    </button>
+                    <button
+                      onClick={() => setShowPdfPreview(true)}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer transition-all duration-300 text-sm font-medium ${
+                        showPdfPreview
+                          ? 'text-white shadow-lg'
+                          : 'border text-[#588157] hover:text-[#344e41]'
+                      }`}
+                      style={showPdfPreview ? {backgroundColor: '#344e41'} : {borderColor: '#dad7cd'}}
+                    >
+                      PDF
+                    </button>
+                  </div>
 
-                      <div className="mt-6 flex flex-col sm:flex-row gap-3 items-start">
-                        <PDFDownloadLink
-                          document={<MyDocumentPDF rutina={ejercicios} />}
-                          fileName="ejercicios-fisica.pdf"
-                          className="px-4 py-2 rounded-lg font-bold text-white"
-                          style={{background: 'linear-gradient(to right, var(--edu-accent-light), var(--edu-accent))'}}
-                        >
-                          {({ loading }) => (loading ? 'Generando PDF...' : 'Descargar PDF en PDF')}
-                        </PDFDownloadLink>
-                        <span className="text-xs text-gray-500">Se aplican estilos de PDF del mismo estilo visual.</span>
-                      </div>
-
-                      <div className="mt-4" style={{height: '780px', minHeight: '780px'}}>
-                        <PDFViewer style={{width: '100%', height: '100%'}}>
-                          <MyDocumentPDF rutina={ejercicios} />
-                        </PDFViewer>
-                      </div>
-                    </>
+                  {/* CONTENIDO */}
+                  {showPdfPreview ? (
+                    <div style={{height: '520px'}}>
+                      <PDFContent ejercicio={ejercicios} titulo="Ejercicios de Física" preview />
+                    </div>
                   ) : (
+                    <div className="max-h-[500px] overflow-y-auto">
+                      <ExerciseViewer ejercicio={ejercicios} />
+                    </div>
+                  )}
+                </>
+              ) : (
                     <div className="text-center py-12">
                       <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{backgroundColor: 'rgba(163, 177, 138, 0.1)'}}>
                         <HiBolt className="w-8 h-8" style={{color: 'var(--edu-light)'}} />
@@ -189,8 +213,6 @@ export const PhysicExercise = () => {
                       <p className="text-xs mt-2" style={{color: 'var(--edu-light)'}}>Usa el panel lateral para comenzar</p>
                     </div>
                   )}
-                </div>
-              )}
             </div>
           </div>
         </section>
