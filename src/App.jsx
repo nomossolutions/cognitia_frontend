@@ -22,6 +22,8 @@ import { PhilosophyExercise } from './pages/philosophyExercise';
 import { EnglishExercise } from './pages/englishExercise';
 import { PortugueseExercise } from './pages/portugueseExercise';
 import { FrenchExercise } from './pages/frenchExercise';
+import { DatabaseExercise } from './pages/databaseExercise';
+import { NetworksExercise } from './pages/networksExercise';
 
 function App() {
 
@@ -44,6 +46,8 @@ function App() {
         <Route path='/englishexercise' element={<EnglishExercise/>}/>
         <Route path='/portugueseexercise' element={<PortugueseExercise/>}/>
         <Route path='/frenchexercise' element={<FrenchExercise/>}/>
+        <Route path='/databaseexercise' element={<DatabaseExercise/>}/>
+        <Route path='/networksexercise' element={<NetworksExercise/>}/>
         <Route path='/contacto' element={<Contact/>}/>
         <Route path='/nosotros' element={<Nosotros/>}/>
         <Route path='*' element={<ErrorPage/>}/>

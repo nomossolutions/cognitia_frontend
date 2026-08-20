@@ -9,7 +9,7 @@ export const HomePage = () => {
   return (
     <>
       {/* SECCIÓN PRINCIPAL */}
-      <header id="hero" className="py-12 sm:py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
+      <header id="hero" className="py-16 sm:py-20 md:py-28 lg:py-36 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundImage: `linear-gradient(var(--edu-hero-overlay), var(--edu-hero-overlay-heavy)), url('${heroImg}')`,
         backgroundSize: "cover",
         backgroundPosition: "center"
@@ -116,7 +116,7 @@ export const HomePage = () => {
 
       {/* DISCIPLINAS */}
       {/* DISCIPLINAS */}
-      <section id="disciplines" aria-labelledby="disciplines-heading" className="py-10 sm:py-14 md:py-16 px-4 sm:px-6 lg:px-8 bg-pattern relative overflow-hidden">
+      <section id="disciplines" aria-labelledby="disciplines-heading" className="scroll-mt-20 py-8 sm:py-10 md:py-12 px-4 sm:px-6 lg:px-8 bg-pattern relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(218,215,205,0.2)_0%,transparent_50%)] pointer-events-none"></div>
 
         <div className="container mx-auto max-w-7xl relative z-10">
@@ -411,7 +411,7 @@ export const HomePage = () => {
       </section>
 
       {/* CÓMO FUNCIONA */}
-      <section id="how-it-works" aria-labelledby="how-it-works-heading" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="how-it-works" aria-labelledby="how-it-works-heading" className="scroll-mt-20 py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-10 lg:gap-12">
 
@@ -468,10 +468,10 @@ export const HomePage = () => {
       </section>
 
       {/* BENEFICIOS */}
-      <section aria-labelledby="benefits-heading" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-pattern">
+      <section aria-labelledby="benefits-heading" className="py-14 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 bg-pattern">
         <div className="container mx-auto max-w-7xl">
           <h2 id="benefits-heading" className="sr-only">Beneficios</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 text-center">
 
             <div className="flex flex-col items-center">
               <div className="mb-4 md:mb-6 p-3 md:p-4 rounded-full shadow-soft-xl bg-white/50 backdrop-blur-sm border" style={{ borderColor: 'var(--edu-badge-border)' }}>
@@ -502,7 +502,7 @@ export const HomePage = () => {
       </section>
 
       {/* AVISO */}
-      <section aria-labelledby="disclaimer-heading" className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+      <section aria-labelledby="disclaimer-heading" className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-3xl">
           <div className="rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-10 text-center border" style={{ backgroundColor: 'var(--edu-soft-white)', borderColor: 'var(--edu-card-border)' }}>
             <div className="flex justify-center mb-4">

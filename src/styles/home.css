@@ -34,6 +34,28 @@
   animation: badge-entrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--edu-light) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--edu-light);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--edu-mid);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-float {
     animation: none;

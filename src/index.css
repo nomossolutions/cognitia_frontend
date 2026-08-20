@@ -27,6 +27,39 @@
   --tracking-wide: 0.025em;
   --tracking-wider: 0.05em;
   --tracking-widest: 0.1em;
+
+  /* Spacing scale (4px base) */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+
+  /* Section rhythm — dense sections (grouped content, less breathing room) */
+  --section-py-dense: 2.5rem;
+  --section-py-dense-sm: 3rem;
+  --section-py-dense-md: 3.5rem;
+
+  /* Section rhythm — medium sections (balanced) */
+  --section-py-medium: 3rem;
+  --section-py-medium-sm: 4rem;
+  --section-py-medium-md: 5rem;
+  --section-py-medium-lg: 6rem;
+
+  /* Section rhythm — generous sections (hero, impact, breathing room) */
+  --section-py-generous: 4rem;
+  --section-py-generous-sm: 5rem;
+  --section-py-generous-md: 6rem;
+  --section-py-generous-lg: 8rem;
 }
 
 html {

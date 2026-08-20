@@ -5,7 +5,7 @@ import '../styles/footer.css';
 
 export const FooterComponent = () => {
     return (
-        <footer className="bg-(--edu-darkest) py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-20 border-t border-white/5">
+        <footer className="bg-(--edu-darkest) py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5">
             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
 
                 {/* Brand */}

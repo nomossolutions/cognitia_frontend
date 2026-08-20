@@ -206,6 +206,26 @@ export async function ProgrammingExerciseIA(mensaje) {
     }));
 }
 
+export async function DatabaseExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: 'Bases de Datos',
+        tema: mensaje.tema,
+        grado: mensaje.grado,
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+    }));
+}
+
+export async function NetworksExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: 'Sistemas y Redes',
+        tema: mensaje.tema,
+        grado: mensaje.grado,
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+    }));
+}
+
 /* CIENCIAS - NUEVAS */
 export async function ChemistryExerciseIA(mensaje) {
     return fetchGemini(buildUserPrompt({
