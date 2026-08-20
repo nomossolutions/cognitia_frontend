@@ -23,7 +23,7 @@ const CustomDropdown = ({ name, options, value, onChange, placeholder }) => {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-3.5 py-2.5 rounded-xl outline-none transition-all duration-200 text-sm font-medium border flex items-center justify-between cursor-pointer"
+        className="w-full px-3.5 py-2.5 rounded-xl outline-none transition-all duration-200 text-body-sm font-medium border flex items-center justify-between cursor-pointer"
         style={{
           backgroundColor: 'var(--edu-surface-elevated)',
           color: value ? 'var(--edu-darkest)' : 'var(--edu-mid)',
@@ -56,7 +56,7 @@ const CustomDropdown = ({ name, options, value, onChange, placeholder }) => {
                 key={opt}
                 type="button"
                 onClick={() => { onChange(opt); setIsOpen(false); }}
-                className="w-full px-3 py-2 text-left text-sm font-medium flex items-center justify-between gap-2 cursor-pointer transition-colors duration-100"
+                className="w-full px-3 py-2 text-left text-body-sm font-medium flex items-center justify-between gap-2 cursor-pointer transition-colors duration-100"
                 style={{
                   color: value === opt ? 'var(--edu-accent)' : 'var(--edu-dark)',
                   backgroundColor: value === opt ? 'var(--edu-glow-accent-soft)' : 'transparent'
@@ -100,7 +100,7 @@ const LevelButton = ({ level, selected, onClick, icon: Icon }) => (
       />
     )}
     <span
-      className="text-xs font-semibold tracking-wide"
+      className="text-caption font-semibold tracking-wide"
       style={{ color: selected ? '#ffffff' : 'var(--edu-darkest)' }}
     >
       {level}
@@ -114,7 +114,7 @@ const ExerciseTabs = ({ showPdfPreview, setShowPdfPreview }) => (
       role="tab"
       aria-selected={!showPdfPreview}
       onClick={() => setShowPdfPreview(false)}
-      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold transition-all duration-200 cursor-pointer"
+      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-micro sm:text-caption font-bold transition-all duration-200 cursor-pointer"
       style={{
         backgroundColor: !showPdfPreview ? 'var(--edu-darkest)' : 'transparent',
         color: !showPdfPreview ? '#ffffff' : 'var(--edu-mid)',
@@ -127,7 +127,7 @@ const ExerciseTabs = ({ showPdfPreview, setShowPdfPreview }) => (
       role="tab"
       aria-selected={showPdfPreview}
       onClick={() => setShowPdfPreview(true)}
-      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold transition-all duration-200 cursor-pointer"
+      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-micro sm:text-caption font-bold transition-all duration-200 cursor-pointer"
       style={{
         backgroundColor: showPdfPreview ? 'var(--edu-darkest)' : 'transparent',
         color: showPdfPreview ? '#ffffff' : 'var(--edu-mid)',
@@ -228,7 +228,7 @@ export const ExercisePage = ({
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-extrabold tracking-tight" style={{ color: 'var(--edu-darkest)' }}>{title}</h3>
-              <p className="text-[10px] uppercase tracking-widest font-bold mt-0.5" style={{ color: 'var(--edu-accent)' }}>Configuración IA</p>
+              <p className="text-micro uppercase tracking-widest font-bold mt-0.5" style={{ color: 'var(--edu-accent)' }}>Configuración IA</p>
             </div>
           </div>
         </div>
@@ -237,7 +237,7 @@ export const ExercisePage = ({
         <div className="flex flex-col gap-4">
           {extraFields.map(field => (
             <div key={field.name} className="flex flex-col gap-1">
-              <label htmlFor={field.name} className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>{field.label}</label>
+              <label htmlFor={field.name} className="text-caption font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>{field.label}</label>
               {field.type === 'select' ? (
                 <CustomDropdown
                   name={field.name}
@@ -252,7 +252,7 @@ export const ExercisePage = ({
                   id={field.name}
                   name={field.name}
                   placeholder={field.placeholder}
-                  className="w-full px-3.5 py-2.5 rounded-xl outline-none transition-all duration-200 text-sm font-medium border"
+                  className="w-full px-3.5 py-2.5 rounded-xl outline-none transition-all duration-200 text-body-sm font-medium border"
                   style={{
                     backgroundColor: 'var(--edu-surface-elevated)',
                     color: 'var(--edu-darkest)',
@@ -264,7 +264,7 @@ export const ExercisePage = ({
           ))}
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="tema" className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>Tema Principal</label>
+            <label htmlFor="tema" className="text-caption font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>Tema Principal</label>
             <input
               type="text"
               id="tema"
@@ -281,7 +281,7 @@ export const ExercisePage = ({
           </div>
 
           <div className="flex flex-col gap-1">
-            <span className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>Nivel Educativo</span>
+            <span className="text-caption font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>Nivel Educativo</span>
             <div className="grid grid-cols-3 gap-1.5" role="radiogroup" aria-label="Nivel educativo">
               <LevelButton level="Primaria" selected={nivelSeleccionado === 'Primaria'} onClick={() => setNivelSeleccionado('Primaria')} icon={HiUserGroup} />
               <LevelButton level="Secundaria" selected={nivelSeleccionado === 'Secundaria'} onClick={() => setNivelSeleccionado('Secundaria')} icon={HiAcademicCap} />
@@ -291,7 +291,7 @@ export const ExercisePage = ({
 
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-1">
-              <label htmlFor="cantidad" className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>Cantidad</label>
+              <label htmlFor="cantidad" className="text-caption font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>Cantidad</label>
               <input
                 type="number"
                 id="cantidad"
@@ -311,7 +311,7 @@ export const ExercisePage = ({
             </div>
 
             <div className="flex flex-col gap-1">
-              <label htmlFor="tipoEjercicio" className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>Formato</label>
+              <label htmlFor="tipoEjercicio" className="text-caption font-bold uppercase tracking-wider" style={{ color: 'var(--edu-darkest)' }}>Formato</label>
               <CustomDropdown
                 name="tipoEjercicio"
                 options={['Opción Múltiple', 'Verdadero/Falso', 'Completar', 'Respuesta Libre']}
@@ -331,7 +331,7 @@ export const ExercisePage = ({
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full font-bold py-3 px-4 rounded-xl transition-all duration-200 transform active:scale-[0.98] text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full font-bold py-3 px-4 rounded-xl transition-all duration-200 transform active:scale-[0.98] text-caption uppercase tracking-wider flex items-center justify-center gap-2 shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ backgroundColor: 'var(--edu-accent)', color: 'white' }}
           >
             <HiSparkles className="w-4 h-4 animate-pulse" />
@@ -340,7 +340,7 @@ export const ExercisePage = ({
         </div>
 
         {error && (
-          <div role="alert" className="flex items-center gap-2.5 p-3 rounded-xl text-xs font-medium" style={{ backgroundColor: 'var(--edu-error-bg)', color: 'var(--edu-error)', border: '1px solid color-mix(in srgb, var(--edu-error) 25%, transparent)' }}>
+          <div role="alert" className="flex items-center gap-2.5 p-3 rounded-xl text-caption font-medium" style={{ backgroundColor: 'var(--edu-error-bg)', color: 'var(--edu-error)', border: '1px solid color-mix(in srgb, var(--edu-error) 25%, transparent)' }}>
             <HiInformationCircle className="w-4 h-4 flex-shrink-0" />
             <p>{error}</p>
           </div>
@@ -351,7 +351,7 @@ export const ExercisePage = ({
           <div className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--edu-glow-accent-subtle)' }}>
             <HiInformationCircle className="w-3.5 h-3.5" style={{ color: 'var(--edu-accent)' }} />
           </div>
-          <p className="text-[10px] leading-snug font-medium" style={{ color: 'var(--edu-mid)' }}>
+          <p className="text-micro leading-snug font-medium" style={{ color: 'var(--edu-mid)' }}>
             {description}
           </p>
         </div>
@@ -364,7 +364,7 @@ export const ExercisePage = ({
           {/* Header Superior */}
           <div className="flex items-center justify-between flex-wrap gap-2 shrink-0 pb-2 border-b" style={{ borderColor: 'var(--edu-card-border)' }}>
             <div>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest mb-1" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', color: 'var(--edu-accent)' }}>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-micro font-extrabold uppercase tracking-widest mb-1" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', color: 'var(--edu-accent)' }}>
                 <HiSparkles className="w-3 h-3" /> Motor Cognitia IA
               </span>
               <h2 className="text-xl sm:text-2xl font-black tracking-tight" style={{ color: 'var(--edu-darkest)' }}>
@@ -387,10 +387,10 @@ export const ExercisePage = ({
                 <div className="relative w-12 h-12 mb-3">
                   <div className="absolute inset-0 rounded-full border-3 border-t-transparent animate-spin" style={{ borderColor: 'var(--edu-accent)', borderTopColor: 'transparent' }}></div>
                 </div>
-                <p className="font-bold text-sm" style={{ color: 'var(--edu-darkest)' }}>
+                <p className="font-bold text-body-sm" style={{ color: 'var(--edu-darkest)' }}>
                   Sintetizando ejercicios...
                 </p>
-                <p className="text-xs font-medium mt-0.5" style={{ color: 'var(--edu-mid)' }}>Optimizando según el nivel educativo</p>
+                <p className="text-caption font-medium mt-0.5" style={{ color: 'var(--edu-mid)' }}>Optimizando según el nivel educativo</p>
               </div>
             ) : ejercicios ? (
               <>
@@ -408,7 +408,7 @@ export const ExercisePage = ({
                     <button
                       type="button"
                       onClick={handleClear}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold transition-all duration-200 cursor-pointer border"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-caption sm:text-caption font-bold transition-all duration-200 cursor-pointer border"
                       style={{ borderColor: 'var(--edu-card-border)', color: 'var(--edu-mid)' }}
                     >
                       <HiTrash className="w-3 h-3" />
@@ -418,7 +418,7 @@ export const ExercisePage = ({
                 </div>
 
                 {/* CONTENEDOR DE SCROLL PROPIO */}
-                <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
+                <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar" aria-live="polite">
                   <div id="panel-ejercicios" role="tabpanel" hidden={showPdfPreview} className="focus:outline-none">
                     <ExerciseViewer ejercicio={ejercicios} />
                   </div>
@@ -435,8 +435,8 @@ export const ExercisePage = ({
                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl mb-3 flex items-center justify-center shadow-inner" style={{ backgroundColor: 'var(--edu-glow-accent-subtle)' }}>
                   <Icon className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: 'var(--edu-accent)' }} />
                 </div>
-                <h4 className="font-bold text-sm mb-0.5" style={{ color: 'var(--edu-darkest)' }}>Panel de Vista Previa</h4>
-                <p className="text-xs max-w-xs font-medium" style={{ color: 'var(--edu-mid)' }}>
+                <h4 className="font-bold text-base mb-0.5" style={{ color: 'var(--edu-darkest)' }}>Panel de Vista Previa</h4>
+                <p className="text-caption max-w-xs font-medium" style={{ color: 'var(--edu-mid)' }}>
                   Completa los parámetros del panel izquierdo y presiona <strong style={{ color: 'var(--edu-darkest)' }}>Generar Ejercicios</strong>.
                 </p>
               </div>

@@ -11,19 +11,19 @@ export const FooterComponent = () => {
                 {/* Brand */}
                 <div className="col-span-1 sm:col-span-2 space-y-4 sm:space-y-6">
                     <div className="flex items-center gap-3">
-                        <h2 className="text-white text-xl font-bold leading-tight tracking-tight">
+                        <h2 className="text-white text-xl font-bold leading-heading tracking-tight">
                             Cognitia <span className="text-(--edu-mid) text-sm uppercase tracking-widest">Education</span>
                         </h2>
                     </div>
 
                     <div className="space-y-4">
-                        <p className="text-(--edu-light) max-w-md text-sm leading-relaxed">
+                        <p className="text-(--edu-light) max-w-md text-body-sm leading-body">
                             Tu tutor personal impulsado por inteligencia artificial. Ejercicios personalizados en múltiples disciplinas,
                             seguimiento continuo y material adaptado a tu nivel de aprendizaje.
                         </p>
                         <div className="flex items-start gap-2 bg-(--edu-mid)/10 border border-(--edu-mid)/20 p-4 rounded-lg max-w-md">
                             <HiInformationCircle className="w-5 h-5 text-(--edu-mid) shrink-0 mt-0.5" />
-                            <p className="text-(--edu-light) text-xs leading-relaxed">
+                            <p className="text-(--edu-light) text-caption leading-body">
                                 <span className="text-white/90 font-semibold">Importante:</span> Los ejercicios son generados por IA. 
                                 Verifica siempre que el contenido se adapte a tu nivel educativo.
                             </p>
@@ -31,7 +31,7 @@ export const FooterComponent = () => {
                     </div>
 
                     <div className="flex flex-col gap-3 pt-2">
-                        <p className="text-(--edu-light) text-sm leading-relaxed">
+                        <p className="text-(--edu-light) text-body-sm leading-body">
                             ¿Te gusta el proyecto? Ayúdanos a seguir mejorando:
                         </p>
                         <a 
@@ -55,8 +55,8 @@ export const FooterComponent = () => {
 
                 {/* Navigation */}
                 <div>
-                    <h5 className="text-white/80 font-bold mb-6 uppercase tracking-wider text-sm">Navegación</h5>
-                    <ul className="space-y-4 text-(--edu-light) text-sm">
+                    <h5 className="text-white/80 font-bold mb-6 uppercase tracking-widest text-caption">Navegación</h5>
+                    <ul className="space-y-4 text-(--edu-light) text-body-sm">
                         <li><NavLink className="hover:text-(--edu-mid) transition-colors py-2 inline-block min-h-[44px] flex items-center" to="/">Inicio</NavLink></li>
                         <li><a className="hover:text-(--edu-mid) transition-colors py-2 inline-block min-h-[44px] flex items-center" href="/#disciplines">Disciplinas</a></li>
                         <li><NavLink className="hover:text-(--edu-mid) transition-colors py-2 inline-block min-h-[44px] flex items-center" to="/nosotros">Nosotros</NavLink></li>
@@ -66,8 +66,8 @@ export const FooterComponent = () => {
 
                 {/* Resources */}
                 <div>
-                    <h5 className="text-white/80 font-bold mb-6 uppercase tracking-wider text-sm">Recursos</h5>
-                    <ul className="space-y-4 text-(--edu-light) text-sm">
+                    <h5 className="text-white/80 font-bold mb-6 uppercase tracking-widest text-caption">Recursos</h5>
+                    <ul className="space-y-4 text-(--edu-light) text-body-sm">
                         <li>
                             <a className="hover:text-(--edu-mid) transition-colors flex items-center gap-2 py-2 min-h-[44px]" href="https://cafecito.app/jcforni" target="_blank" rel="noopener noreferrer">
                                 Apoyar Proyecto
@@ -94,7 +94,7 @@ export const FooterComponent = () => {
                     </p>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-white/80 text-sm">
+                <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-white/80 text-body-sm">
                     <p className="text-center md:text-right">
                         Desarrollado por <a href="https://nomosdigital.com.ar/" className='text-transparent bg-clip-text bg-(--edu-accent) hover:underline transition-colors font-semibold'>Nomos Digital</a>
                     </p>

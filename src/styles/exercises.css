@@ -36,6 +36,7 @@
 
 .prose h1 {
   color: var(--edu-darkest);
+  font-size: 1.5rem;
   border-bottom: 2px solid var(--edu-accent);
   padding-bottom: 8px;
   margin-bottom: 16px;
@@ -43,18 +44,21 @@
 
 .prose h2 {
   color: var(--edu-accent-light);
+  font-size: 1.25rem;
   margin-top: 20px;
   margin-bottom: 12px;
 }
 
 .prose h3 {
   color: var(--edu-mid);
+  font-size: 1.125rem;
   margin-top: 16px;
   margin-bottom: 10px;
 }
 
 .prose h4 {
   color: var(--edu-light);
+  font-size: 1rem;
   margin-top: 14px;
   margin-bottom: 8px;
 }
@@ -102,7 +106,7 @@
   color: var(--edu-darkest);
   padding: 2px 6px;
   border-radius: 3px;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
   font-size: 0.9em;
 }
 

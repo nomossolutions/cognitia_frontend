@@ -33,15 +33,15 @@ export const Contact = () => {
       {/* Hero Section */}
       <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-pattern">
         <div className="container mx-auto max-w-4xl text-center">
-          <span className="inline-block px-4 py-2 mb-6 text-sm font-bold tracking-wider uppercase rounded-full"
+          <span className="inline-block px-4 py-2 mb-6 text-body-sm font-bold tracking-wider uppercase rounded-full"
             style={{ backgroundColor: 'var(--edu-light)', color: 'var(--edu-darkest)' }}>
             Contacto
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight"
+          <h1 className="text-h1-sm sm:text-h1 md:text-hero-sm lg:text-hero font-extrabold mb-6 leading-heading"
             style={{ color: 'var(--edu-darkest)' }}>
             Hablemos de <span style={{ color: 'var(--edu-accent)' }}>educación</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed"
+          <p className="text-body sm:text-h3-sm md:text-h3 max-w-3xl mx-auto leading-body"
             style={{ color: 'var(--edu-dark)' }}>
             ¿Tenés dudas, sugerencias o querés conocer más? Escribinos y te respondemos a la brevedad
           </p>
@@ -62,14 +62,14 @@ export const Contact = () => {
                 style={{ backgroundColor: 'var(--edu-accent)' }}>
                 <MdMail className="text-2xl text-white" />
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold"
+              <h2 className="text-h2-sm sm:text-h2 font-bold"
                 style={{ color: 'var(--edu-darkest)' }}>
                 Envíanos un mensaje
               </h2>
             </div>
 
             <div className="mb-6 formGroup">
-              <label htmlFor="name" className="flex items-center gap-2 text-sm font-bold mb-2"
+              <label htmlFor="name" className="flex items-center gap-2 text-body-sm font-bold mb-2"
                 style={{ color: 'var(--edu-dark)' }}>
                 <MdPerson className="text-base" style={{ color: 'var(--edu-mid)' }} />
                 Nombre
@@ -80,7 +80,7 @@ export const Contact = () => {
                 name="name"
                 required
                 placeholder="Nombre completo"
-                className="w-full px-4 py-3 min-h-[44px] border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-sm sm:text-base"
+                className="w-full px-4 py-3 min-h-[44px] border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-body-sm sm:text-body"
                 style={{
                   borderColor: 'var(--edu-lightest)',
                   color: 'var(--edu-darkest)'
@@ -91,7 +91,7 @@ export const Contact = () => {
             </div>
 
             <div className="mb-6 formGroup">
-              <label htmlFor="email" className="flex items-center gap-2 text-sm font-bold mb-2"
+              <label htmlFor="email" className="flex items-center gap-2 text-body-sm font-bold mb-2"
                 style={{ color: 'var(--edu-dark)' }}>
                 <MdAlternateEmail className="text-base" style={{ color: 'var(--edu-mid)' }} />
                 Email
@@ -102,7 +102,7 @@ export const Contact = () => {
                 name="email"
                 required
                 placeholder="email@ejemplo.com"
-                className="w-full px-4 py-3 min-h-[44px] border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-sm sm:text-base"
+                className="w-full px-4 py-3 min-h-[44px] border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-body-sm sm:text-body"
                 style={{
                   borderColor: 'var(--edu-lightest)',
                   color: 'var(--edu-darkest)'
@@ -113,7 +113,7 @@ export const Contact = () => {
             </div>
 
             <div className="mb-8 formGroup">
-              <label htmlFor="message" className="flex items-center gap-2 text-sm font-bold mb-2"
+              <label htmlFor="message" className="flex items-center gap-2 text-body-sm font-bold mb-2"
                 style={{ color: 'var(--edu-dark)' }}>
                 <MdChat className="text-base" style={{ color: 'var(--edu-mid)' }} />
                 Mensaje
@@ -124,7 +124,7 @@ export const Contact = () => {
                 rows={4}
                 required
                 placeholder="Contanos qué necesitás o qué te gustaría saber..."
-                className="w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all resize-none text-sm sm:text-base"
+                className="w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all resize-none text-body-sm sm:text-body"
                 style={{
                   borderColor: 'var(--edu-lightest)',
                   color: 'var(--edu-darkest)'
@@ -136,7 +136,7 @@ export const Contact = () => {
 
             <button
               type="submit"
-              className="w-full text-white font-bold py-3 sm:py-4 px-6 min-h-[44px] rounded-xl transition-all hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-sm sm:text-base"
+              className="w-full text-white font-bold py-3 sm:py-4 px-6 min-h-[44px] rounded-xl transition-all hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-body-sm sm:text-body"
               style={{ backgroundColor: 'var(--edu-accent)' }}
             >
               <MdSend />
@@ -157,10 +157,10 @@ export const Contact = () => {
                 style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
                 <MdSchedule className="text-3xl" style={{ color: 'var(--edu-accent)' }} />
               </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--edu-darkest)' }}>
+              <h3 className="text-h3 font-bold mb-2" style={{ color: 'var(--edu-darkest)' }}>
                 Respuesta Rápida
               </h3>
-              <p className="text-sm" style={{ color: 'var(--edu-dark)' }}>
+              <p className="text-body-sm" style={{ color: 'var(--edu-dark)' }}>
                 Respondemos a la brevedad
               </p>
             </div>
@@ -171,10 +171,10 @@ export const Contact = () => {
                 style={{ backgroundColor: 'var(--edu-badge-bg)' }}>
                 <MdVerified className="text-3xl" style={{ color: 'var(--edu-mid)' }} />
               </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--edu-darkest)' }}>
+              <h3 className="text-h3 font-bold mb-2" style={{ color: 'var(--edu-darkest)' }}>
                 100% Confiable
               </h3>
-              <p className="text-sm" style={{ color: 'var(--edu-dark)' }}>
+              <p className="text-body-sm" style={{ color: 'var(--edu-dark)' }}>
                 Tus datos están seguros y protegidos
               </p>
             </div>
@@ -185,10 +185,10 @@ export const Contact = () => {
                 style={{ backgroundColor: 'color-mix(in srgb, var(--edu-accent-light) 20%, transparent)' }}>
                 <MdSupportAgent className="text-3xl" style={{ color: 'var(--edu-accent-light)' }} />
               </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--edu-darkest)' }}>
+              <h3 className="text-h3 font-bold mb-2" style={{ color: 'var(--edu-darkest)' }}>
                 Soporte Dedicado
               </h3>
-              <p className="text-sm" style={{ color: 'var(--edu-dark)' }}>
+              <p className="text-body-sm" style={{ color: 'var(--edu-dark)' }}>
                 Un equipo listo para ayudarte
               </p>
             </div>

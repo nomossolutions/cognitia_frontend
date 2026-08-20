@@ -8,11 +8,11 @@ export const ErrorPage = () => {
         <span className="text-8xl font-black" style={{color: 'var(--edu-accent)'}}>404</span>
       </div>
       
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4" style={{color: 'var(--edu-darkest)'}}>
+      <h1 className="text-h2-sm sm:text-h2 font-bold mb-4" style={{color: 'var(--edu-darkest)'}}>
         Página no encontrada
       </h1>
       
-      <p className="text-lg mb-8 max-w-md" style={{color: 'var(--edu-dark)'}}>
+      <p className="text-body sm:text-h3-sm mb-8 max-w-md" style={{color: 'var(--edu-dark)'}}>
         Lo sentimos, la página que buscás no existe o fue movida a otro lugar.
       </p>
       

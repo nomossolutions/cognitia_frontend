@@ -70,7 +70,7 @@ const buildUserPrompt = (m) => `Materia: ${m.materia || m.region || 'General'}
 Tema: ${m.tema}
 Nivel: ${m.grado || m.nivel || 'No especificado'}
 Cantidad de ejercicios: ${m.cantidad}
-Tipo de ejercicio: ${m.tipoEjercicio || 'opcion_multiple'}
+Tipo de ejercicio: ${m.tipoEjercicio || 'opcion_multiple'}  
 ${m.region ? `Región/Idioma: ${m.region}` : ''}
 ${m.lenguaje ? `Lenguaje de programación: ${m.lenguaje}` : ''}
 Genera los ejercicios con la estructura JSON indicada para el tipo de ejercicio especificado.`;
@@ -203,5 +203,91 @@ export async function ProgrammingExerciseIA(mensaje) {
         cantidad: mensaje.cantidad,
         tipoEjercicio: mensaje.tipoEjercicio,
         lenguaje: mensaje.lenguaje,
+    }));
+}
+
+/* CIENCIAS - NUEVAS */
+export async function ChemistryExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: 'Química',
+        tema: mensaje.tema,
+        grado: mensaje.grado,
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+    }));
+}
+
+export async function BiologyExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: 'Biología',
+        tema: mensaje.tema,
+        grado: mensaje.grado,
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+    }));
+}
+
+/* HUMANIDADES */
+export async function HistoryExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: 'Historia',
+        tema: mensaje.tema,
+        grado: mensaje.grado,
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+    }));
+}
+
+export async function GeographyExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: 'Geografía',
+        tema: mensaje.tema,
+        grado: mensaje.grado,
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+    }));
+}
+
+export async function PhilosophyExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: 'Filosofía',
+        tema: mensaje.tema,
+        grado: mensaje.grado,
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+    }));
+}
+
+/* IDIOMAS - NUEVOS */
+export async function EnglishExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: `Inglés de ${mensaje.region}`,
+        tema: mensaje.tema,
+        nivel: mensaje.grado || 'No especificado',
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+        region: mensaje.region,
+    }));
+}
+
+export async function PortugueseExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: `Portugués de ${mensaje.region}`,
+        tema: mensaje.tema,
+        nivel: mensaje.grado || 'No especificado',
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+        region: mensaje.region,
+    }));
+}
+
+export async function FrenchExerciseIA(mensaje) {
+    return fetchGemini(buildUserPrompt({
+        materia: `Francés de ${mensaje.region}`,
+        tema: mensaje.tema,
+        nivel: mensaje.grado || 'No especificado',
+        cantidad: mensaje.cantidad,
+        tipoEjercicio: mensaje.tipoEjercicio,
+        region: mensaje.region,
     }));
 }
