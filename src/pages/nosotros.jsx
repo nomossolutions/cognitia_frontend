@@ -42,7 +42,7 @@ export const Nosotros = () => {
               </p>
             </div>
             <div className="md:w-1/2">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{minHeight: '280px'}}>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{aspectRatio: '16/10'}}>
                 <img 
                   src="https://images.pexels.com/photos/9159067/pexels-photo-9159067.jpeg" 
                   alt="Educación en el aula"
@@ -50,7 +50,6 @@ export const Nosotros = () => {
                   height="400"
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  style={{minHeight: '280px'}}
                 />
               </div>
             </div>
@@ -72,7 +71,7 @@ export const Nosotros = () => {
               </p>
             </div>
             <div className="md:w-1/2">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{minHeight: '280px'}}>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{aspectRatio: '16/10'}}>
                 <img 
                   src="https://images.pexels.com/photos/5676744/pexels-photo-5676744.jpeg" 
                   alt="Docentes colaborando"
@@ -80,7 +79,6 @@ export const Nosotros = () => {
                   height="400"
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  style={{minHeight: '280px'}}
                 />
               </div>
             </div>
@@ -105,7 +103,7 @@ export const Nosotros = () => {
               </p>
             </div>
             <div className="md:w-1/2">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{minHeight: '280px'}}>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{aspectRatio: '16/10'}}>
                 <img 
                   src="https://images.pexels.com/photos/3768126/pexels-photo-3768126.jpeg" 
                   alt="Innovación educativa"
@@ -113,7 +111,6 @@ export const Nosotros = () => {
                   height="400"
                   loading="lazy"
                   className="w-full h-full object-cover"
-                  style={{minHeight: '280px'}}
                 />
               </div>
             </div>

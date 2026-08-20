@@ -121,7 +121,7 @@ export const Contact = () => {
               <textarea
                 id="message"
                 name="message"
-                rows={6}
+                rows={4}
                 required
                 placeholder="Contanos qué necesitás o qué te gustaría saber..."
                 className="w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all resize-none text-sm sm:text-base"

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { PDFContent, PDFDownloadLink, ExerciseViewer } from './pdf';
-import { HiSparkles, HiUserGroup, HiAcademicCap, HiBuildingLibrary, HiInformationCircle, HiChevronDown, HiCheck } from 'react-icons/hi2';
+import { HiSparkles, HiUserGroup, HiAcademicCap, HiBuildingLibrary, HiInformationCircle, HiChevronDown, HiCheck, HiTrash } from 'react-icons/hi2';
 
 const CustomDropdown = ({ name, options, value, onChange, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -109,12 +109,12 @@ const LevelButton = ({ level, selected, onClick, icon: Icon }) => (
 );
 
 const ExerciseTabs = ({ showPdfPreview, setShowPdfPreview }) => (
-  <div className="inline-flex p-1 gap-1 rounded-2xl border" style={{ backgroundColor: 'var(--edu-soft-white)', borderColor: 'var(--edu-card-border)' }} role="tablist">
+  <div className="inline-flex p-1 gap-1 rounded-xl sm:rounded-2xl border" style={{ backgroundColor: 'var(--edu-soft-white)', borderColor: 'var(--edu-card-border)' }} role="tablist">
     <button
       role="tab"
       aria-selected={!showPdfPreview}
       onClick={() => setShowPdfPreview(false)}
-      className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer"
+      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold transition-all duration-200 cursor-pointer"
       style={{
         backgroundColor: !showPdfPreview ? 'var(--edu-darkest)' : 'transparent',
         color: !showPdfPreview ? '#ffffff' : 'var(--edu-mid)',
@@ -127,7 +127,7 @@ const ExerciseTabs = ({ showPdfPreview, setShowPdfPreview }) => (
       role="tab"
       aria-selected={showPdfPreview}
       onClick={() => setShowPdfPreview(true)}
-      className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer"
+      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold transition-all duration-200 cursor-pointer"
       style={{
         backgroundColor: showPdfPreview ? 'var(--edu-darkest)' : 'transparent',
         color: showPdfPreview ? '#ffffff' : 'var(--edu-mid)',
@@ -141,7 +141,7 @@ const ExerciseTabs = ({ showPdfPreview, setShowPdfPreview }) => (
 
 export const ExercisePage = ({
   title,
-  icon: Icon,
+  icon: Icon, // eslint-disable-line no-unused-vars
   iaFunction,
   description,
   extraFields = [],
@@ -157,6 +157,26 @@ export const ExercisePage = ({
     extraFields.forEach(f => { initial[f.name] = ''; });
     return initial;
   });
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(`cognitia_ejercicios_${title}`);
+      if (saved) setEjercicios(JSON.parse(saved));
+    } catch { /* ignore corrupted data */ }
+  }, [title]);
+
+  useEffect(() => {
+    if (ejercicios) {
+      try { localStorage.setItem(`cognitia_ejercicios_${title}`, JSON.stringify(ejercicios)); }
+      catch { /* quota exceeded — silently ignore */ }
+    }
+  }, [ejercicios, title]);
+
+  function handleClear() {
+    setEjercicios(null);
+    setShowPdfPreview(false);
+    localStorage.removeItem(`cognitia_ejercicios_${title}`);
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -187,13 +207,13 @@ export const ExercisePage = ({
 
   return (
     // Fijamos la pantalla completa sin scroll general (h-screen y overflow-hidden en LG)
-    <div id='principalContainer' className="h-screen w-full flex flex-col lg:flex-row bg-pattern font-sans antialiased overflow-hidden">
+    <div id='principalContainer' className="min-h-screen w-full flex flex-col lg:flex-row lg:h-screen lg:overflow-hidden bg-pattern font-sans antialiased">
 
-      {/* Sidebar Form (Scrollable si la pantalla es muy pequeña verticalmente) */}
+      {/* Sidebar Form */}
       <form
         onSubmit={handleSubmit}
         id="principalForm"
-        className="p-6 w-full lg:w-[380px] border-r flex flex-col gap-5 h-full overflow-y-auto shrink-0"
+        className="p-4 sm:p-6 w-full md:w-[320px] lg:w-[380px] border-r flex flex-col gap-4 sm:gap-5 lg:h-full lg:overflow-y-auto shrink-0 scroll-smooth"
         style={{
           backgroundColor: 'var(--edu-lightest)',
           borderColor: 'var(--edu-card-border)',
@@ -202,12 +222,12 @@ export const ExercisePage = ({
       >
         {/* Panel Header */}
         <div className="flex flex-col gap-2 pb-3 border-b" style={{ borderColor: 'color-mix(in srgb, var(--edu-mid) 15%, transparent)' }}>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-sm" style={{ backgroundColor: 'var(--edu-darkest)' }}>
-              <Icon className="w-5 h-5 text-white" />
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center shadow-sm" style={{ backgroundColor: 'var(--edu-darkest)' }}>
+              <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
             <div>
-              <h3 className="text-lg font-extrabold tracking-tight" style={{ color: 'var(--edu-darkest)' }}>{title}</h3>
+              <h3 className="text-base sm:text-lg font-extrabold tracking-tight" style={{ color: 'var(--edu-darkest)' }}>{title}</h3>
               <p className="text-[10px] uppercase tracking-widest font-bold mt-0.5" style={{ color: 'var(--edu-accent)' }}>Configuración IA</p>
             </div>
           </div>
@@ -338,8 +358,8 @@ export const ExercisePage = ({
       </form>
 
       {/* Main Area: Fija y estructurada para contener el scroll internamente */}
-      <section className="flex-1 p-6 lg:p-8 flex flex-col h-full overflow-hidden" style={{ backgroundColor: 'var(--edu-soft-white)' }}>
-        <div className="max-w-4xl mx-auto w-full flex flex-col h-full gap-4">
+      <section className="flex-1 p-4 sm:p-6 lg:p-8 flex flex-col lg:h-full lg:overflow-hidden min-w-0" style={{ backgroundColor: 'var(--edu-soft-white)' }}>
+        <div className="max-w-4xl mx-auto w-full flex flex-col lg:h-full gap-3 sm:gap-4">
 
           {/* Header Superior */}
           <div className="flex items-center justify-between flex-wrap gap-2 shrink-0 pb-2 border-b" style={{ borderColor: 'var(--edu-card-border)' }}>
@@ -347,7 +367,7 @@ export const ExercisePage = ({
               <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest mb-1" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', color: 'var(--edu-accent)' }}>
                 <HiSparkles className="w-3 h-3" /> Motor Cognitia IA
               </span>
-              <h2 className="text-2xl font-black tracking-tight" style={{ color: 'var(--edu-darkest)' }}>
+              <h2 className="text-xl sm:text-2xl font-black tracking-tight" style={{ color: 'var(--edu-darkest)' }}>
                 {title}
               </h2>
             </div>
@@ -355,7 +375,7 @@ export const ExercisePage = ({
 
           {/* Tarjeta Contenedora Principal */}
           <div
-            className="rounded-3xl p-6 transition-all duration-300 border flex flex-col flex-1 min-h-0 overflow-hidden relative"
+            className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 transition-all duration-300 border flex flex-col flex-1 min-h-0 overflow-hidden relative"
             style={{
               backgroundColor: '#ffffff',
               borderColor: 'var(--edu-card-border)',
@@ -363,7 +383,7 @@ export const ExercisePage = ({
             }}
           >
             {isLoading ? (
-              <div className="flex flex-col items-center justify-center my-auto py-12" aria-live="polite">
+              <div className="flex flex-col items-center justify-center my-auto py-8 sm:py-12" aria-live="polite">
                 <div className="relative w-12 h-12 mb-3">
                   <div className="absolute inset-0 rounded-full border-3 border-t-transparent animate-spin" style={{ borderColor: 'var(--edu-accent)', borderTopColor: 'transparent' }}></div>
                 </div>
@@ -375,15 +395,26 @@ export const ExercisePage = ({
             ) : ejercicios ? (
               <>
                 {/* Header de pestañas y botones (Fijo) */}
-                <div className="flex items-center justify-between flex-wrap gap-3 mb-4 shrink-0">
+                <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 mb-3 sm:mb-4 shrink-0">
                   <ExerciseTabs showPdfPreview={showPdfPreview} setShowPdfPreview={setShowPdfPreview} />
-                  {showPdfPreview && (
-                    <PDFDownloadLink
-                      ejercicio={ejercicios}
-                      titulo={`Ejercicios de ${title}`}
-                      className="shadow-sm hover:shadow transition-shadow"
-                    />
-                  )}
+                  <div className="flex items-center gap-2">
+                    {showPdfPreview && (
+                      <PDFDownloadLink
+                        ejercicio={ejercicios}
+                        titulo={`Ejercicios de ${title}`}
+                        className="shadow-sm hover:shadow transition-shadow"
+                      />
+                    )}
+                    <button
+                      type="button"
+                      onClick={handleClear}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold transition-all duration-200 cursor-pointer border"
+                      style={{ borderColor: 'var(--edu-card-border)', color: 'var(--edu-mid)' }}
+                    >
+                      <HiTrash className="w-3 h-3" />
+                      Limpiar
+                    </button>
+                  </div>
                 </div>
 
                 {/* CONTENEDOR DE SCROLL PROPIO */}
@@ -393,16 +424,16 @@ export const ExercisePage = ({
                   </div>
 
                   <div id="panel-pdf" role="tabpanel" hidden={!showPdfPreview} className="focus:outline-none rounded-2xl overflow-hidden border h-full" style={{ borderColor: 'var(--edu-card-border)' }}>
-                    <div className="h-full min-h-[450px]">
+                    <div className="h-full min-h-[350px] sm:min-h-[450px]">
                       <PDFContent ejercicio={ejercicios} titulo={`Ejercicios de ${title}`} preview />
                     </div>
                   </div>
                 </div>
               </>
             ) : (
-              <div className="text-center my-auto py-12 flex flex-col items-center">
-                <div className="w-14 h-14 rounded-2xl mb-3 flex items-center justify-center shadow-inner" style={{ backgroundColor: 'var(--edu-glow-accent-subtle)' }}>
-                  <Icon className="w-7 h-7" style={{ color: 'var(--edu-accent)' }} />
+              <div className="text-center my-auto py-8 sm:py-12 flex flex-col items-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl mb-3 flex items-center justify-center shadow-inner" style={{ backgroundColor: 'var(--edu-glow-accent-subtle)' }}>
+                  <Icon className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: 'var(--edu-accent)' }} />
                 </div>
                 <h4 className="font-bold text-sm mb-0.5" style={{ color: 'var(--edu-darkest)' }}>Panel de Vista Previa</h4>
                 <p className="text-xs max-w-xs font-medium" style={{ color: 'var(--edu-mid)' }}>

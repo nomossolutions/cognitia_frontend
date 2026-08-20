@@ -22,7 +22,7 @@ export const NavigateApp = () => {
           </NavLink>
           
           <button 
-            className="lg:hidden p-2 min-w-[44px] min-h-[44px] rounded-md hover:bg-(--edu-dark) transition-colors flex items-center justify-center"
+            className="md:hidden p-2 min-w-[44px] min-h-[44px] rounded-md hover:bg-(--edu-dark) transition-colors flex items-center justify-center"
             onClick={() => setIsOpen(!isOpen)}
             aria-controls="basic-navbar-nav"
             aria-expanded={isOpen}
@@ -35,11 +35,11 @@ export const NavigateApp = () => {
             )}
           </button>
 
-          <div id="basic-navbar-nav" className={`${isOpen ? 'block' : 'hidden'} w-full lg:flex lg:w-auto lg:items-center absolute lg:relative top-16 lg:top-0 left-0 lg:left-auto bg-(--edu-darkest) lg:bg-transparent shadow-lg lg:shadow-none z-50`}>
-            <div className="flex flex-col lg:flex-row lg:space-x-6 xl:space-x-8 p-4 lg:p-0 font-medium">
+          <div id="basic-navbar-nav" className={`${isOpen ? 'block' : 'hidden'} w-full md:flex md:w-auto md:items-center absolute md:relative top-16 md:top-0 left-0 md:left-auto bg-(--edu-darkest) md:bg-transparent shadow-lg md:shadow-none z-50 transition-all duration-200`}>
+            <div className="flex flex-col md:flex-row md:space-x-4 lg:space-x-6 xl:space-x-8 p-4 md:p-0 font-medium">
               <NavLink 
                 to='/' 
-                className="px-3 py-2 min-h-[44px] flex items-center rounded-md hover:text-(--edu-light) transition-colors text-sm lg:text-base focus-visible:ring-2 focus-visible:ring-(--edu-accent) focus-visible:outline-none"
+                className="px-3 py-2 min-h-[44px] flex items-center rounded-md hover:text-(--edu-light) transition-colors text-sm md:text-base focus-visible:ring-2 focus-visible:ring-(--edu-accent) focus-visible:outline-none"
                 end
               >
                 Inicio
@@ -47,7 +47,7 @@ export const NavigateApp = () => {
               
               <a 
                 href='/#disciplines' 
-                className="px-3 py-2 min-h-[44px] flex items-center rounded-md hover:text-(--edu-light) transition-colors text-sm lg:text-base focus-visible:ring-2 focus-visible:ring-(--edu-accent) focus-visible:outline-none"
+                className="px-3 py-2 min-h-[44px] flex items-center rounded-md hover:text-(--edu-light) transition-colors text-sm md:text-base focus-visible:ring-2 focus-visible:ring-(--edu-accent) focus-visible:outline-none"
                 onClick={closeMenu}
               >
                 Disciplinas
@@ -55,14 +55,14 @@ export const NavigateApp = () => {
               
               <NavLink 
                 to='/nosotros' 
-                className="px-3 py-2 min-h-[44px] flex items-center rounded-md hover:text-(--edu-light) transition-colors text-sm lg:text-base focus-visible:ring-2 focus-visible:ring-(--edu-accent) focus-visible:outline-none"
+                className="px-3 py-2 min-h-[44px] flex items-center rounded-md hover:text-(--edu-light) transition-colors text-sm md:text-base focus-visible:ring-2 focus-visible:ring-(--edu-accent) focus-visible:outline-none"
                 onClick={closeMenu}
               >
                 Nosotros
               </NavLink>
               <NavLink 
                 to='/contacto' 
-                className="px-3 py-2 min-h-[44px] flex items-center rounded-md hover:text-(--edu-light) transition-colors text-sm lg:text-base focus-visible:ring-2 focus-visible:ring-(--edu-accent) focus-visible:outline-none"
+                className="px-3 py-2 min-h-[44px] flex items-center rounded-md hover:text-(--edu-light) transition-colors text-sm md:text-base focus-visible:ring-2 focus-visible:ring-(--edu-accent) focus-visible:outline-none"
                 onClick={closeMenu}
               >
                 Contacto
@@ -70,7 +70,7 @@ export const NavigateApp = () => {
             </div>
           </div>
 
-          <a href="/#disciplines" className="hidden lg:flex bg-(--edu-accent) hover:bg-(--edu-accent-light) text-white px-4 xl:px-6 py-2 min-h-[44px] items-center rounded-full font-semibold transition-all cursor-pointer">
+          <a href="/#disciplines" className="hidden md:flex bg-(--edu-accent) hover:bg-(--edu-accent-light) text-white px-4 xl:px-6 py-2 min-h-[44px] items-center rounded-full font-semibold transition-all cursor-pointer">
             Comenzar!
           </a>
         </div>

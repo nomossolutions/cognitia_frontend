@@ -5,11 +5,11 @@ import '../styles/footer.css';
 
 export const FooterComponent = () => {
     return (
-        <footer className="bg-(--edu-darkest) py-20 px-6 lg:px-20 border-t border-white/5">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <footer className="bg-(--edu-darkest) py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-20 border-t border-white/5">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
 
                 {/* Brand */}
-                <div className="col-span-1 md:col-span-2 space-y-6">
+                <div className="col-span-1 sm:col-span-2 space-y-4 sm:space-y-6">
                     <div className="flex items-center gap-3">
                         <h2 className="text-white text-xl font-bold leading-tight tracking-tight">
                             Cognitia <span className="text-(--edu-mid) text-sm uppercase tracking-widest">Education</span>
@@ -87,7 +87,7 @@ export const FooterComponent = () => {
             </div>
 
             {/* Bottom */}
-            <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="max-w-7xl mx-auto pt-12 sm:pt-16 lg:pt-20 mt-12 sm:mt-16 lg:mt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
                 <div className="text-center md:text-left">
                     <p className="text-white/80 text-xs mt-2">
                         © 2026 Cognitia Education. Todos los derechos reservados.
