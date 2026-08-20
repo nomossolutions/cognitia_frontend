@@ -26,3 +26,11 @@ dist-ssr
 # Enviroment Variables
 .env
 .env.development
+
+# Impeccable Design System
+.impeccable/
+PRODUCT.md
+
+# AI Agent Configs
+.opencode/
+.gemini/

@@ -162,7 +162,7 @@ export const Contact = () => {
                 Respuesta Rápida
               </h3>
               <p className="text-sm" style={{ color: 'var(--edu-dark)' }}>
-                Respondemos a la brevedad.
+                Respondemos a la brevedad
               </p>
             </div>
 
