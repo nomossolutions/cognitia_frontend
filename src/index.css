@@ -1,2 +1,76 @@
 @import "tailwindcss";
 
+:root {
+  --edu-soft-white: #f8f9f7;
+  --edu-lightest: #dad7cd;
+  --edu-light: #a3b18a;
+  --edu-mid: #588157;
+  --edu-dark: #3a5a40;
+  --edu-darkest: #344e41;
+  --edu-accent: #e76f51;
+  --edu-accent-light: #f4a261;
+
+  --edu-hero-overlay: color-mix(in srgb, var(--edu-darkest) 72%, transparent);
+  --edu-hero-overlay-heavy: color-mix(in srgb, var(--edu-darkest) 85%, transparent);
+  --edu-glow-accent-subtle: color-mix(in srgb, var(--edu-accent) 5%, transparent);
+  --edu-glow-accent-soft: color-mix(in srgb, var(--edu-accent) 15%, transparent);
+  --edu-badge-bg: color-mix(in srgb, var(--edu-light) 20%, transparent);
+  --edu-badge-border: color-mix(in srgb, var(--edu-accent) 20%, transparent);
+  --edu-surface-glass: color-mix(in srgb, white 10%, transparent);
+  --edu-surface-glass-border: color-mix(in srgb, white 20%, transparent);
+  --edu-card-border: color-mix(in srgb, var(--edu-lightest) 30%, transparent);
+  --edu-card-border-hover: color-mix(in srgb, var(--edu-lightest) 50%, transparent);
+
+  /* Semantic roles */
+  --edu-surface: var(--edu-soft-white);
+  --edu-surface-elevated: #ffffff;
+  --edu-text-primary: var(--edu-darkest);
+  --edu-text-secondary: var(--edu-dark);
+  --edu-text-muted: var(--edu-mid);
+  --edu-text-on-accent: #ffffff;
+  --edu-focus-ring: var(--edu-accent);
+
+  /* Status colors */
+  --edu-success: #2d8a4e;
+  --edu-success-bg: color-mix(in srgb, var(--edu-success) 12%, transparent);
+  --edu-warning: #d4930d;
+  --edu-warning-bg: color-mix(in srgb, var(--edu-warning) 12%, transparent);
+  --edu-error: #c53929;
+  --edu-error-bg: color-mix(in srgb, var(--edu-error) 12%, transparent);
+  --edu-info: #2563eb;
+  --edu-info-bg: color-mix(in srgb, var(--edu-info) 12%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-transition {
+    transition: none;
+  }
+  .card-transition:hover {
+    transform: none;
+  }
+
+  .hero-float {
+    animation: none;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--edu-accent);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--edu-accent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}

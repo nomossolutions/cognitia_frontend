@@ -199,7 +199,7 @@ export async function ProgrammingExerciseIA(mensaje) {
     return fetchGemini(buildUserPrompt({
         materia: `Programación en ${mensaje.lenguaje}`,
         tema: mensaje.tema,
-        nivel: 'No especificado',
+        nivel: mensaje.grado || 'No especificado',
         cantidad: mensaje.cantidad,
         tipoEjercicio: mensaje.tipoEjercicio,
         lenguaje: mensaje.lenguaje,

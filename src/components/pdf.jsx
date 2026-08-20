@@ -16,94 +16,50 @@ const fechaActual = new Date().toLocaleDateString("es-AR", {
 });
 
 const safeArray = (value) => (Array.isArray(value) ? value : []);
+const str = (value) => (value === undefined || value === null || value === "" ? "-" : String(value));
 
-const str = (value) =>
-  value === undefined || value === null || value === ""
-    ? "-"
-    : String(value);
+// PALETA UNIFICADA (HEXA EQUIVALENTES A VARS EDU)
+const COLOR = {
+  darkest: "#1e293b",
+  accent: "#e76f51",
+  accentLight: "#f4a261",
+  cardBorder: "#e2e8f0",
+  textMain: "#0f172a",
+  textMuted: "#64748b",
+  bgLight: "#f8fafc",
+  successBg: "#f0fdf4",
+  successBorder: "#22c55e",
+  warnBg: "#fff7ed",
+  warnBorder: "#ffedd5",
+  warnText: "#c2410c",
+};
 
 /* ============================================================
-    ESTILOS COGNITIA (VERDES + NARANJAS)
+    1. ESTILOS REGLAMENTARIOS PARA EL DOCUMENTO PDF
 ============================================================ */
-
-const styles = StyleSheet.create({
+const pdfStyles = StyleSheet.create({
   page: {
-    paddingTop: 36,
-    paddingBottom: 48,
-    paddingHorizontal: 36,
+    paddingTop: 32,
+    paddingBottom: 36,
+    paddingHorizontal: 32,
     fontSize: 9,
-    color: "#3a5a40",
+    color: COLOR.textMain,
     fontFamily: "Helvetica",
     backgroundColor: "#ffffff",
   },
-
-  /* HEADER */
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    borderBottomWidth: 2,
-    borderBottomColor: "#e76f51",
-    paddingBottom: 14,
-    marginBottom: 16,
-  },
-  brand: {
-    fontSize: 9,
-    fontWeight: "bold",
-    color: "#e76f51",
-    letterSpacing: 2.5,
-    textTransform: "uppercase",
-    marginBottom: 3,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#344e41",
-    letterSpacing: -0.5,
-  },
-  subtitle: {
-    fontSize: 10,
-    color: "#588157",
-    marginTop: 2,
-  },
-  headerRight: {
-    textAlign: "right",
-    backgroundColor: "#f8f9f7",
-    paddingVertical: 6,
-    paddingHorizontal: 8,
-    borderRadius: 6,
-    borderWidth: 1,
-    borderColor: "#dad7cd",
-  },
-  headerRightLabel: {
-    fontSize: 7,
-    fontWeight: "bold",
-    color: "#588157",
-    letterSpacing: 1,
-    textTransform: "uppercase",
-    marginBottom: 2,
-  },
-  headerRightValue: {
-    fontSize: 9,
-    fontWeight: "semibold",
-    color: "#344e41",
-  },
-
-  /* HERO CARD */
-  heroCard: {
+  heroHeader: {
+    backgroundColor: COLOR.darkest,
+    borderRadius: 10,
+    padding: 14,
+    marginBottom: 12,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 18,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    backgroundColor: "#344e41",
-    borderRadius: 8,
   },
-  heroLabel: {
-    fontSize: 7.5,
-    color: "#e76f51",
+  heroMateria: {
+    fontSize: 7,
     fontWeight: "bold",
+    color: COLOR.accent,
     textTransform: "uppercase",
     letterSpacing: 1.5,
   },
@@ -113,85 +69,62 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     marginTop: 2,
   },
-  heroInfo: {
+  metaContainer: {
     flexDirection: "row",
-    gap: 16,
-    textAlign: "right",
+    gap: 12,
   },
-  infoLabel: {
-    fontSize: 7,
+  metaBlock: {
+    alignItems: "flex-end",
+  },
+  metaLabel: {
+    fontSize: 6,
+    fontWeight: "bold",
     color: "#a3b18a",
-    fontWeight: "bold",
     textTransform: "uppercase",
-    letterSpacing: 0.8,
   },
-  infoValue: {
-    marginTop: 2,
-    fontSize: 9.5,
+  metaValue: {
+    fontSize: 8.5,
     fontWeight: "bold",
-    color: "#f8f9f7",
+    color: "#ffffff",
+    marginTop: 1,
   },
-
-  /* SECCIONES Y TITULOS */
-  section: {
-    marginBottom: 16,
-  },
-  sectionTitle: {
-    fontSize: 10,
-    fontWeight: "bold",
-    color: "#344e41",
-    textTransform: "uppercase",
-    letterSpacing: 1,
-    paddingBottom: 4,
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#dad7cd",
-  },
-
-  /* INSTRUCCIONES */
   instruccionesBox: {
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    borderRadius: 6,
+    padding: 10,
+    borderRadius: 8,
     borderWidth: 1,
-    backgroundColor: "#f8f9f7",
-    borderColor: "#dad7cd",
-    marginBottom: 16,
+    backgroundColor: COLOR.bgLight,
+    borderColor: COLOR.cardBorder,
+    marginBottom: 12,
   },
   instruccionesLabel: {
-    fontSize: 7.5,
+    fontSize: 6.5,
     fontWeight: "bold",
-    color: "#588157",
+    color: COLOR.textMuted,
     textTransform: "uppercase",
     letterSpacing: 0.8,
-    marginBottom: 4,
+    marginBottom: 2,
   },
   instruccionesText: {
-    fontSize: 9,
-    lineHeight: 1.45,
-    color: "#3a5a40",
+    fontSize: 8.5,
+    lineHeight: 1.4,
+    color: COLOR.textMain,
   },
-
-  /* EJERCICIO CARD */
   ejercicioCard: {
-    marginBottom: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    borderRadius: 6,
+    marginBottom: 10,
+    padding: 12,
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#e76f51",
+    borderColor: COLOR.cardBorder,
     backgroundColor: "#ffffff",
-    borderLeftWidth: 4,
-    borderLeftColor: "#e76f51",
   },
   ejercicioHeader: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: 6,
     marginBottom: 6,
   },
-  ejercicioNumero: {
-    backgroundColor: "#e76f51",
+  badgeNumero: {
+    backgroundColor: COLOR.accent,
     color: "#ffffff",
     fontWeight: "bold",
     fontSize: 8,
@@ -201,299 +134,216 @@ const styles = StyleSheet.create({
   },
   ejercicioTipo: {
     fontSize: 7,
-    color: "#588157",
+    color: COLOR.textMuted,
     fontWeight: "bold",
     textTransform: "uppercase",
     letterSpacing: 0.5,
   },
   ejercicioEnunciado: {
-    fontSize: 9.5,
-    fontWeight: "bold",
-    color: "#344e41",
-    marginBottom: 8,
-    lineHeight: 1.4,
-  },
-
-  /* OPCIONES */
-  opcionesContainer: {
-    marginBottom: 8,
-  },
-  opcionItem: {
-    flexDirection: "row",
-    gap: 6,
-    marginBottom: 3,
     fontSize: 9,
-    color: "#3a5a40",
-  },
-  opcionBullet: {
-    color: "#f4a261",
     fontWeight: "bold",
+    color: COLOR.textMain,
+    marginBottom: 8,
+    lineHeight: 1.35,
   },
-  opcionCorrecta: {
-    backgroundColor: "#f0fdf4",
-    paddingVertical: 2,
-    paddingHorizontal: 4,
-    borderRadius: 3,
-  },
-
-  /* RESPUESTA Y EXPLICACION */
-  respuestaBox: {
+  opcionesGrid: {
     flexDirection: "row",
-    alignItems: "center",
+    flexWrap: "wrap",
     gap: 6,
-    marginTop: 6,
+    marginBottom: 4,
+  },
+  opcionBox: {
+    width: "48%",
     paddingVertical: 6,
     paddingHorizontal: 8,
-    backgroundColor: "#f0fdf4",
-    borderRadius: 4,
+    borderRadius: 6,
     borderWidth: 1,
-    borderColor: "#a3b18a",
+    borderColor: COLOR.cardBorder,
+    backgroundColor: COLOR.bgLight,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
   },
-  respuestaLabel: {
-    fontSize: 7.5,
-    fontWeight: "bold",
-    color: "#588157",
-    textTransform: "uppercase",
+  opcionBoxCorrecta: {
+    backgroundColor: COLOR.successBg,
+    borderColor: COLOR.successBorder,
   },
-  respuestaValue: {
-    fontSize: 9.5,
-    fontWeight: "bold",
-    color: "#344e41",
+  opcionDot: {
+    width: 4,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: COLOR.textMuted,
+  },
+  opcionDotCorrecta: {
+    backgroundColor: COLOR.successBorder,
+  },
+  opcionText: {
+    fontSize: 8,
+    fontWeight: "semibold",
+    color: COLOR.textMain,
   },
   explicacionBox: {
     marginTop: 6,
-    paddingVertical: 6,
-    paddingHorizontal: 8,
-    backgroundColor: "#fff7ed",
-    borderRadius: 4,
+    padding: 8,
+    backgroundColor: COLOR.warnBg,
+    borderRadius: 6,
     borderWidth: 1,
-    borderColor: "#fed7aa",
+    borderColor: COLOR.warnBorder,
   },
   explicacionLabel: {
-    fontSize: 7.5,
+    fontSize: 6.5,
     fontWeight: "bold",
-    color: "#c2410c",
+    color: COLOR.warnText,
     textTransform: "uppercase",
     marginBottom: 2,
   },
   explicacionText: {
-    fontSize: 8.5,
-    lineHeight: 1.4,
-    color: "#334155",
+    fontSize: 8,
+    lineHeight: 1.35,
+    color: COLOR.textMain,
   },
-
-  /* FOOTER */
   footer: {
     position: "absolute",
-    bottom: 20,
-    left: 36,
-    right: 36,
+    bottom: 16,
+    left: 32,
+    right: 32,
     borderTopWidth: 1,
-    borderTopColor: "#dad7cd",
-    paddingTop: 8,
+    borderTopColor: "#f1f5f9",
+    paddingTop: 6,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    color: "#a3b18a",
-    fontSize: 7.5,
-  },
-  footerBrand: {
-    fontWeight: "bold",
-    color: "#588157",
-    letterSpacing: 1,
+    color: COLOR.textMuted,
+    fontSize: 7,
   },
 });
 
 /* ============================================================
-    COMPONENTES AUXILIARES
+    2. DOCUMENTO PDF (DESCARGA E IMPRESIÓN)
 ============================================================ */
-
-const InfoBlock = ({ label, value }) => (
-  <View>
-    <Text style={styles.infoLabel}>{label}</Text>
-    <Text style={styles.infoValue}>{str(value)}</Text>
-  </View>
-);
-
-/* ============================================================
-    BLOQUE DE EJERCICIO
-============================================================ */
-
-const EjercicioCard = ({ ejercicio }) => (
-  <View style={styles.ejercicioCard} wrap={false}>
-    <View style={styles.ejercicioHeader}>
-      <Text style={styles.ejercicioNumero}>{str(ejercicio.numero)}</Text>
-      <Text style={styles.ejercicioTipo}>
-        {str(ejercicio.tipo || "opcion_multiple")}
-      </Text>
+const PdfEjercicioCard = ({ ejercicio }) => (
+  <View style={pdfStyles.ejercicioCard} wrap={false}>
+    <View style={pdfStyles.ejercicioHeader}>
+      <Text style={pdfStyles.badgeNumero}>{str(ejercicio.numero)}</Text>
+      <Text style={pdfStyles.ejercicioTipo}>{str(ejercicio.tipo || "opcion_multiple")}</Text>
     </View>
-    <Text style={styles.ejercicioEnunciado}>{str(ejercicio.enunciado)}</Text>
+    <Text style={pdfStyles.ejercicioEnunciado}>{str(ejercicio.enunciado)}</Text>
 
     {safeArray(ejercicio.opciones).length > 0 && (
-      <View style={styles.opcionesContainer}>
+      <View style={pdfStyles.opcionesGrid}>
         {ejercicio.opciones.map((opcion, idx) => {
           const esCorrecta = opcion.startsWith(ejercicio.respuestaCorrecta);
           return (
-            <View
-              key={idx}
-              style={[
-                styles.opcionItem,
-                esCorrecta && styles.opcionCorrecta,
-              ]}
-            >
-              <Text style={styles.opcionBullet}>•</Text>
-              <Text>{str(opcion)}</Text>
+            <View key={idx} style={[pdfStyles.opcionBox, esCorrecta && pdfStyles.opcionBoxCorrecta]}>
+
+              <Text style={pdfStyles.opcionText}>{str(opcion)}</Text>
             </View>
           );
         })}
       </View>
     )}
 
-    {ejercicio.respuestaCorrecta && (
-      <View style={styles.respuestaBox}>
-        <Text style={styles.respuestaLabel}>Respuesta:</Text>
-        <Text style={styles.respuestaValue}>
-          {str(ejercicio.respuestaCorrecta)}
+    {safeArray(ejercicio.opciones).length === 0 && ejercicio.respuestaCorrecta && (
+      <View style={[pdfStyles.opcionBox, pdfStyles.opcionBoxCorrecta]}>
+        <View style={[pdfStyles.opcionDot, pdfStyles.opcionDotCorrecta]} />
+        <Text style={pdfStyles.opcionText}>
+          {ejercicio.tipo === 'verdadero_falso'
+            ? `Respuesta: ${str(ejercicio.respuestaCorrecta)}`
+            : `Respuestas: ${str(ejercicio.respuestaCorrecta)}`}
         </Text>
       </View>
     )}
 
     {ejercicio.explicacion && (
-      <View style={styles.explicacionBox}>
-        <Text style={styles.explicacionLabel}>Explicación</Text>
-        <Text style={styles.explicacionText}>{str(ejercicio.explicacion)}</Text>
+      <View style={pdfStyles.explicacionBox}>
+        <Text style={pdfStyles.explicacionLabel}>Explicación paso a paso</Text>
+        <Text style={pdfStyles.explicacionText}>{str(ejercicio.explicacion)}</Text>
       </View>
     )}
   </View>
 );
 
-/* ============================================================
-    DOCUMENTO PDF
-============================================================ */
-
 export const ExerciseDocument = ({ ejercicio, titulo = "Ejercicios" }) => {
   if (!ejercicio) return null;
-
   const ejercicios = safeArray(ejercicio.ejercicios);
 
   return (
     <Document title={`${titulo} - Cognitia`}>
-      <Page size="A4" style={styles.page}>
-        {/* HEADER */}
-        <View style={styles.header}>
+      <Page size="A4" style={pdfStyles.page}>
+        <View style={pdfStyles.heroHeader}>
           <View>
-            <Text style={styles.brand}>COGNITIA</Text>
-            <Text style={styles.title}>{str(ejercicio.titulo || titulo)}</Text>
-            <Text style={styles.subtitle}>Ejercicios generados con IA</Text>
+            <Text style={pdfStyles.heroMateria}>{str(ejercicio.materia)}</Text>
+            <Text style={pdfStyles.heroTitle}>{str(ejercicio.titulo || titulo)}</Text>
           </View>
-          <View style={styles.headerRight}>
-            <Text style={styles.headerRightLabel}>FECHA</Text>
-            <Text style={styles.headerRightValue}>{fechaActual}</Text>
+          <View style={pdfStyles.metaContainer}>
+            <View style={pdfStyles.metaBlock}>
+              <Text style={pdfStyles.metaLabel}>Tema</Text>
+              <Text style={pdfStyles.metaValue}>{str(ejercicio.tema)}</Text>
+            </View>
+            <View style={pdfStyles.metaBlock}>
+              <Text style={pdfStyles.metaLabel}>Nivel</Text>
+              <Text style={pdfStyles.metaValue}>{str(ejercicio.nivel)}</Text>
+            </View>
+            <View style={pdfStyles.metaBlock}>
+              <Text style={pdfStyles.metaLabel}>Fecha</Text>
+              <Text style={pdfStyles.metaValue}>{fechaActual}</Text>
+            </View>
           </View>
         </View>
 
-        {/* HERO CARD */}
-        <View style={styles.heroCard}>
-          <View>
-            <Text style={styles.heroLabel}>Materia</Text>
-            <Text style={styles.heroTitle}>{str(ejercicio.materia)}</Text>
-          </View>
-          <View style={styles.heroInfo}>
-            <InfoBlock label="Tema" value={ejercicio.tema} />
-            <InfoBlock label="Nivel" value={ejercicio.nivel} />
-            <InfoBlock label="Cantidad" value={ejercicios.length} />
-          </View>
-        </View>
-
-        {/* INSTRUCCIONES */}
         {ejercicio.instrucciones && (
-          <View style={styles.instruccionesBox} wrap={false}>
-            <Text style={styles.instruccionesLabel}>Instrucciones</Text>
-            <Text style={styles.instruccionesText}>
-              {str(ejercicio.instrucciones)}
-            </Text>
+          <View style={pdfStyles.instruccionesBox} wrap={false}>
+            <Text style={pdfStyles.instruccionesLabel}>Instrucciones para el estudiante</Text>
+            <Text style={pdfStyles.instruccionesText}>{str(ejercicio.instrucciones)}</Text>
           </View>
         )}
 
-        {/* EJERCICIOS */}
         {ejercicios.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Ejercicios</Text>
+          <View>
             {ejercicios.map((ej, index) => (
-              <EjercicioCard key={index} ejercicio={ej} />
+              <PdfEjercicioCard key={index} ejercicio={ej} />
             ))}
           </View>
         )}
 
-        {/* FOOTER */}
-        <View style={styles.footer} fixed>
-          <Text style={styles.footerBrand}>COGNITIA</Text>
-          <Text>© 2026 Cognitia - Ejercicios generados con IA</Text>
+        <View style={pdfStyles.footer} fixed>
+          <Text style={{ fontWeight: "bold", color: COLOR.textMuted }}>Cognitia Education</Text>
+          <Text>© {new Date().getFullYear()} powered by Nomos Digital</Text>
         </View>
       </Page>
     </Document>
   );
 };
 
-/* ============================================================
-    VISTA PREVIA (PDFViewer)
-============================================================ */
-
-export const PDFContent = ({
-  ejercicio,
-  titulo = "Ejercicios",
-  preview = false,
-}) => {
+export const PDFContent = ({ ejercicio, titulo = "Ejercicios", preview = false }) => {
   if (!ejercicio) return null;
-
   return (
-    <PDFViewer
-      showToolbar={false}
-      style={{
-        width: "100%",
-        height: preview ? "100%" : 500,
-        border: "none",
-        borderRadius: 8,
-      }}
-    >
+    <PDFViewer showToolbar={false} style={{ width: "100%", height: preview ? "100%" : 500, border: "none" }}>
       <ExerciseDocument ejercicio={ejercicio} titulo={titulo} />
     </PDFViewer>
   );
 };
 
-/* ============================================================
-    DESCARGAR PDF
-============================================================ */
-
-export const PDFDownloadLink = ({
-  ejercicio,
-  titulo = "Ejercicios",
-  className = "",
-}) => {
+export const PDFDownloadLink = ({ ejercicio, titulo = "Ejercicios", className = "" }) => {
   if (!ejercicio) return null;
-
-  const safeTitulo = (titulo || "Ejercicios")
-    .trim()
-    .replace(/\s+/g, "_")
-    .replace(/[^a-zA-Z0-9_-]/g, "");
-
+  const safeTitulo = (titulo || "Ejercicios").trim().replace(/\s+/g, "_").replace(/[^a-zA-Z0-9_-]/g, "");
   const formattedDate = new Date().toISOString().split("T")[0];
 
   return (
     <PDFDownloadLinkBase
       document={<ExerciseDocument ejercicio={ejercicio} titulo={titulo} />}
       fileName={`${safeTitulo}_${formattedDate}.pdf`}
-      className={`flex items-center gap-2 bg-[#e76f51] hover:bg-[#d35a3e] text-white font-bold py-2 px-4 rounded-lg transition-colors ${className}`}
+      className={`inline-flex items-center gap-2 text-white font-bold py-2 px-4 rounded-xl transition-all text-xs uppercase tracking-wider ${className}`}
+      style={{ backgroundColor: COLOR.accent }}
     >
-      <span className="text-sm">Descargar PDF</span>
+      <span>Descargar PDF</span>
     </PDFDownloadLinkBase>
   );
 };
 
 /* ============================================================
-    VISUALIZADOR WEB DE EJERCICIOS (JSON)
+    3. VISTA WEB INTERACTIVA (RÉPLICA EXACTA DE INTERFAZ PDF)
 ============================================================ */
-
 const tipoLabels = {
   opcion_multiple: 'Opción Múltiple',
   verdadero_falso: 'Verdadero o Falso',
@@ -501,188 +351,141 @@ const tipoLabels = {
   respuesta_libre: 'Respuesta Libre',
 };
 
-const ExerciseContent = ({ ejercicio: ej }) => {
-  if (!ej) return null;
-
-  // OPCIÓN MÚLTIPLE
-  if (ej.tipo === 'opcion_multiple') {
-    return (
-      <>
-        {safeArray(ej.opciones).length > 0 && (
-          <div className="space-y-1 mb-3">
-            {ej.opciones.map((opcion, idx) => {
-              const esCorrecta = opcion.startsWith(ej.respuestaCorrecta);
-              return (
-                <div
-                  key={idx}
-                  className="flex items-start gap-2 text-sm px-2 py-1 rounded"
-                  style={{
-                    backgroundColor: esCorrecta ? '#f0fdf4' : 'transparent',
-                    color: '#3a5a40',
-                  }}
-                >
-                  <span style={{ color: '#f4a261' }}>•</span>
-                  <span>{str(opcion)}</span>
-                </div>
-              );
-            })}
-          </div>
-        )}
-        {ej.respuestaCorrecta && (
-          <div
-            className="flex items-center gap-2 px-3 py-2 rounded text-sm mb-2"
-            style={{ backgroundColor: '#f0fdf4', border: '1px solid #a3b18a' }}
-          >
-            <span className="font-bold" style={{ color: '#588157' }}>Respuesta:</span>
-            <span className="font-bold" style={{ color: '#344e41' }}>{str(ej.respuestaCorrecta)}</span>
-          </div>
-        )}
-      </>
-    );
-  }
-
-  // VERDADERO O FALSO
-  if (ej.tipo === 'verdadero_falso') {
-    const esVerdadero = ej.respuestaCorrecta?.toLowerCase() === 'verdadero';
-    return (
-      <div className="flex gap-3 mb-3">
-        <div
-          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold"
-          style={{
-            backgroundColor: esVerdadero ? '#f0fdf4' : '#f8f9f7',
-            border: `2px solid ${esVerdadero ? '#22c55e' : '#dad7cd'}`,
-            color: esVerdadero ? '#166534' : '#6b7280',
-          }}
-        >
-          ✅ Verdadero
-        </div>
-        <div
-          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold"
-          style={{
-            backgroundColor: !esVerdadero ? '#fef2f2' : '#f8f9f7',
-            border: `2px solid ${!esVerdadero ? '#ef4444' : '#dad7cd'}`,
-            color: !esVerdadero ? '#991b1b' : '#6b7280',
-          }}
-        >
-          ❌ Falso
-        </div>
-      </div>
-    );
-  }
-
-  // COMPLETAR
-  if (ej.tipo === 'completar') {
-    return (
-      <div
-        className="px-3 py-2 rounded text-sm mb-2"
-        style={{ backgroundColor: '#f0fdf4', border: '1px solid #a3b18a' }}
-      >
-        <span className="font-bold" style={{ color: '#588157' }}>Respuesta: </span>
-        <span className="font-bold" style={{ color: '#344e41' }}>{str(ej.respuestaCorrecta)}</span>
-      </div>
-    );
-  }
-
-  // RESPUESTA LIBRE
-  if (ej.tipo === 'respuesta_libre') {
-    return (
-      <div
-        className="px-3 py-2 rounded text-sm mb-2"
-        style={{ backgroundColor: '#eff6ff', border: '1px solid #93c5fd' }}
-      >
-        <p className="font-bold text-xs uppercase mb-1" style={{ color: '#1d4ed8' }}>Respuesta esperada</p>
-        <p style={{ color: '#1e3a5f' }}>{str(ej.respuestaEsperada)}</p>
-      </div>
-    );
-  }
-
-  return null;
-};
-
 export const ExerciseViewer = ({ ejercicio }) => {
   if (!ejercicio) return null;
-
   const ejercicios = safeArray(ejercicio.ejercicios);
 
   return (
-    <div className="space-y-4">
-      {/* Header info */}
-      <div className="p-4 rounded-lg" style={{ backgroundColor: '#344e41' }}>
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-widest font-bold" style={{ color: '#e76f51' }}>
-              {str(ejercicio.materia)}
-            </p>
-            <h3 className="text-lg font-bold text-white mt-1">{str(ejercicio.titulo)}</h3>
+    <div className="space-y-3 font-sans antialiased text-left">
+      {/* Hero Header Card */}
+      <div
+        className="p-3.5 rounded-xl border flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm"
+        style={{ backgroundColor: COLOR.darkest, borderColor: COLOR.darkest }}
+      >
+        <div>
+          <span className="text-[9px] uppercase tracking-widest font-extrabold block" style={{ color: COLOR.accent }}>
+            {str(ejercicio.materia)}
+          </span>
+          <h3 className="text-base font-bold text-white tracking-tight mt-0.5">{str(ejercicio.titulo)}</h3>
+        </div>
+        <div className="flex gap-4 border-t md:border-t-0 md:border-l pt-2 md:pt-0 md:pl-4" style={{ borderColor: 'rgba(255,255,255,0.15)' }}>
+          <div className="text-right">
+            <p className="text-[8px] uppercase tracking-wider font-extrabold" style={{ color: '#a3b18a' }}>Tema</p>
+            <p className="text-xs font-bold text-white mt-0.5">{str(ejercicio.tema)}</p>
           </div>
-          <div className="flex gap-4 text-right">
-            <div>
-              <p className="text-xs uppercase tracking-widest font-bold" style={{ color: '#a3b18a' }}>Tema</p>
-              <p className="text-sm font-bold text-white">{str(ejercicio.tema)}</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-widest font-bold" style={{ color: '#a3b18a' }}>Nivel</p>
-              <p className="text-sm font-bold text-white">{str(ejercicio.nivel)}</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-widest font-bold" style={{ color: '#a3b18a' }}>Tipo</p>
-              <p className="text-sm font-bold text-white">{tipoLabels[ejercicio.tipoEjercicio] || 'Opción Múltiple'}</p>
-            </div>
+          <div className="text-right">
+            <p className="text-[8px] uppercase tracking-wider font-extrabold" style={{ color: '#a3b18a' }}>Nivel</p>
+            <p className="text-xs font-bold text-white mt-0.5">{str(ejercicio.nivel)}</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[8px] uppercase tracking-wider font-extrabold" style={{ color: '#a3b18a' }}>Fecha</p>
+            <p className="text-xs font-bold text-white mt-0.5">{fechaActual}</p>
           </div>
         </div>
       </div>
 
-      {/* Instrucciones */}
+      {/* Instructions Box */}
       {ejercicio.instrucciones && (
-        <div className="p-4 rounded-lg border" style={{ backgroundColor: '#f8f9f7', borderColor: '#dad7cd' }}>
-          <p className="text-xs uppercase tracking-widest font-bold mb-2" style={{ color: '#588157' }}>
-            Instrucciones
+        <div className="p-2.5 rounded-lg border" style={{ backgroundColor: COLOR.bgLight, borderColor: COLOR.cardBorder }}>
+          <p className="text-[9px] uppercase tracking-wider font-bold mb-0.5" style={{ color: COLOR.textMuted }}>
+            Instrucciones para el estudiante
           </p>
-          <p className="text-sm" style={{ color: '#3a5a40' }}>{str(ejercicio.instrucciones)}</p>
+          <p className="text-xs leading-relaxed" style={{ color: COLOR.textMain }}>{str(ejercicio.instrucciones)}</p>
         </div>
       )}
 
-      {/* Ejercicios */}
-      {ejercicios.map((ej, index) => (
-        <div
-          key={index}
-          className="p-4 rounded-lg border-l-4"
-          style={{
-            backgroundColor: '#ffffff',
-            borderColor: '#e76f51',
-            border: '1px solid #e76f51',
-            borderLeftWidth: '4px',
-          }}
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <span
-              className="px-2 py-1 rounded text-xs font-bold text-white"
-              style={{ backgroundColor: '#e76f51' }}
-            >
-              {ej.numero}
-            </span>
-            <span className="text-xs uppercase tracking-widest font-bold" style={{ color: '#588157' }}>
-              {tipoLabels[ej.tipo] || str(ej.tipo)}
-            </span>
-          </div>
-          
-          <p className="text-sm font-bold mb-3" style={{ color: '#344e41' }}>
-            {str(ej.enunciado)}
-          </p>
-
-          <ExerciseContent ejercicio={ej} />
-
-          {ej.explicacion && (
-            <div
-              className="px-3 py-2 rounded text-sm"
-              style={{ backgroundColor: '#fff7ed', border: '1px solid #fed7aa' }}
-            >
-              <p className="font-bold text-xs uppercase mb-1" style={{ color: '#c2410c' }}>Explicación</p>
-              <p style={{ color: '#334155' }}>{str(ej.explicacion)}</p>
+      {/* List of Exercise Cards */}
+      <div className="space-y-2.5">
+        {ejercicios.map((ej, index) => (
+          <div
+            key={index}
+            className="p-3 rounded-lg border transition-all"
+            style={{
+              backgroundColor: '#ffffff',
+              borderColor: COLOR.cardBorder,
+            }}
+          >
+            {/* Badge & Type Header */}
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <span
+                className="px-1.5 py-0.5 rounded text-[10px] font-bold text-white leading-none"
+                style={{ backgroundColor: COLOR.accent }}
+              >
+                {ej.numero}
+              </span>
+              <span className="text-[9px] uppercase tracking-wider font-bold" style={{ color: COLOR.textMuted }}>
+                {tipoLabels[ej.tipo] || str(ej.tipo)}
+              </span>
             </div>
-          )}
-        </div>
-      ))}
+
+            {/* Enunciado */}
+            <p className="text-xs font-bold leading-snug mb-2" style={{ color: COLOR.textMain }}>
+              {str(ej.enunciado)}
+            </p>
+
+            {/* Opciones */}
+            {safeArray(ej.opciones).length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-1.5">
+                {ej.opciones.map((opcion, idx) => {
+                  const esCorrecta = opcion.startsWith(ej.respuestaCorrecta);
+                  return (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-md border transition-all"
+                      style={{
+                        backgroundColor: esCorrecta ? COLOR.successBg : COLOR.bgLight,
+                        borderColor: esCorrecta ? COLOR.successBorder : COLOR.cardBorder,
+                        color: COLOR.textMain,
+                      }}
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: esCorrecta ? COLOR.successBorder : COLOR.textMuted }}
+                      />
+                      <span>{str(opcion)}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Respuesta correcta para V/F y Completar */}
+            {safeArray(ej.opciones).length === 0 && ej.respuestaCorrecta && (
+              <div
+                className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-md border transition-all mb-1.5"
+                style={{
+                  backgroundColor: COLOR.successBg,
+                  borderColor: COLOR.successBorder,
+                  color: COLOR.textMain,
+                }}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: COLOR.successBorder }}
+                />
+                <span>
+                  {ej.tipo === 'verdadero_falso'
+                    ? `Respuesta: ${str(ej.respuestaCorrecta)}`
+                    : `Respuestas: ${str(ej.respuestaCorrecta)}`}
+                </span>
+              </div>
+            )}
+
+            {/* Explicación */}
+            {ej.explicacion && (
+              <div
+                className="mt-2 p-2 rounded-md text-xs border"
+                style={{ backgroundColor: COLOR.warnBg, borderColor: COLOR.warnBorder }}
+              >
+                <p className="font-bold text-[9px] uppercase tracking-wider mb-0.5" style={{ color: COLOR.warnText }}>
+                  Explicación paso a paso
+                </p>
+                <p className="leading-snug text-[11px]" style={{ color: COLOR.textMain }}>{str(ej.explicacion)}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -36,7 +36,7 @@ export const FooterComponent = () => {
                         </p>
                         <a 
                             href='https://cafecito.app/jcforni' 
-                            rel='noopener' 
+                            rel='noopener noreferrer' 
                             target='_blank'
                             className='inline-block transition-transform hover:scale-105 w-fit'
                         >
@@ -44,6 +44,9 @@ export const FooterComponent = () => {
                                 srcSet='https://cdn.cafecito.app/imgs/buttons/button_1.png 1x, https://cdn.cafecito.app/imgs/buttons/button_1_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_1_3.75x.png 3.75x' 
                                 src='https://cdn.cafecito.app/imgs/buttons/button_1.png' 
                                 alt='Invitame un café en cafecito.app'
+                                width="160"
+                                height="44"
+                                loading="lazy"
                                 className='w-40 h-auto'
                             />
                         </a>
@@ -54,10 +57,10 @@ export const FooterComponent = () => {
                 <div>
                     <h5 className="text-white/80 font-bold mb-6 uppercase tracking-wider text-sm">Navegación</h5>
                     <ul className="space-y-4 text-(--edu-light) text-sm">
-                        <li><NavLink className="hover:text-(--edu-mid) transition-colors" to="/">Inicio</NavLink></li>
-                        <li><a className="hover:text-(--edu-mid) transition-colors" href="/#disciplines">Disciplinas</a></li>
-                        <li><NavLink className="hover:text-(--edu-mid) transition-colors" to="/nosotros">Nosotros</NavLink></li>
-                        <li><NavLink className="hover:text-(--edu-mid) transition-colors" to="/contacto">Contacto</NavLink></li>
+                        <li><NavLink className="hover:text-(--edu-mid) transition-colors py-2 inline-block min-h-[44px] flex items-center" to="/">Inicio</NavLink></li>
+                        <li><a className="hover:text-(--edu-mid) transition-colors py-2 inline-block min-h-[44px] flex items-center" href="/#disciplines">Disciplinas</a></li>
+                        <li><NavLink className="hover:text-(--edu-mid) transition-colors py-2 inline-block min-h-[44px] flex items-center" to="/nosotros">Nosotros</NavLink></li>
+                        <li><NavLink className="hover:text-(--edu-mid) transition-colors py-2 inline-block min-h-[44px] flex items-center" to="/contacto">Contacto</NavLink></li>
                     </ul>
                 </div>
 
@@ -66,17 +69,17 @@ export const FooterComponent = () => {
                     <h5 className="text-white/80 font-bold mb-6 uppercase tracking-wider text-sm">Recursos</h5>
                     <ul className="space-y-4 text-(--edu-light) text-sm">
                         <li>
-                            <a className="hover:text-(--edu-mid) transition-colors flex items-center gap-2" href="https://cafecito.app/jcforni" target="_blank" rel="noopener">
+                            <a className="hover:text-(--edu-mid) transition-colors flex items-center gap-2 py-2 min-h-[44px]" href="https://cafecito.app/jcforni" target="_blank" rel="noopener noreferrer">
                                 Apoyar Proyecto
                                 <HiArrowTopRightOnSquare className="w-3 h-3" />
                             </a>
                         </li>
-                        <li><NavLink className="hover:text-(--edu-mid) transition-colors" to="/nosotros">Sobre el Proyecto</NavLink></li>
+                        <li><NavLink className="hover:text-(--edu-mid) transition-colors py-2 inline-block min-h-[44px] flex items-center" to="/nosotros">Sobre el Proyecto</NavLink></li>
                         <li>
-                            <span className="text-gray-500 cursor-not-allowed">Términos de Uso</span>
+                            <span className="text-(--edu-mid) cursor-not-allowed py-2 inline-block min-h-[44px]" aria-disabled="true" role="link">Términos de Uso</span>
                         </li>
                         <li>
-                            <span className="text-gray-500 cursor-not-allowed">Privacidad</span>
+                            <span className="text-(--edu-mid) cursor-not-allowed py-2 inline-block min-h-[44px]" aria-disabled="true" role="link">Privacidad</span>
                         </li>
                     </ul>
                 </div>
@@ -93,7 +96,7 @@ export const FooterComponent = () => {
 
                 <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-white/80 text-sm">
                     <p className="text-center md:text-right">
-                        Desarrollado por <a href="https://nomos-solutions.vercel.app/" className='text-transparent bg-clip-text bg-(--edu-accent) hover:underline transition-colors font-semibold'>Nomos Solutions</a>
+                        Desarrollado por <a href="https://nomosdigital.com.ar/" className='text-transparent bg-clip-text bg-(--edu-accent) hover:underline transition-colors font-semibold'>Nomos Digital</a>
                     </p>
                 </div>
             </div>

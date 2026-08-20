@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './styles/header.css';
 import './App.css';
@@ -11,6 +11,7 @@ import { MathExercise } from './pages/mathExercise';
 import { Nosotros } from './pages/nosotros';
 import { Contact } from './pages/contact';
 import { FooterComponent } from './components/FooterComponent';
+import { ScrollToTop } from './components/ScrollToTop';
 import { PhysicExercise } from './pages/physicExercise';
 import { ItalianExercise } from './pages/italianExercise';
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <NavigateApp/>
       <Routes>
         <Route path='/' element={<HomePage/>}/>

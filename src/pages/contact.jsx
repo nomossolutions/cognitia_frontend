@@ -18,9 +18,8 @@ export const Contact = () => {
     })
       .then(
         () => {
-          /* console.log('SUCCESS!'); */
           alert('Email enviado con éxito!');
-          form.current.reset(); // Optional: Clear form fields
+          form.current.reset();
         },
         (error) => {
           console.log('FAILED...', error.text);
@@ -81,7 +80,7 @@ export const Contact = () => {
                 name="name"
                 required
                 placeholder="Nombre completo"
-                className="w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-sm sm:text-base"
+                className="w-full px-4 py-3 min-h-[44px] border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-sm sm:text-base"
                 style={{
                   borderColor: 'var(--edu-lightest)',
                   color: 'var(--edu-darkest)'
@@ -103,7 +102,7 @@ export const Contact = () => {
                 name="email"
                 required
                 placeholder="email@ejemplo.com"
-                className="w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-sm sm:text-base"
+                className="w-full px-4 py-3 min-h-[44px] border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-sm sm:text-base"
                 style={{
                   borderColor: 'var(--edu-lightest)',
                   color: 'var(--edu-darkest)'
@@ -137,7 +136,7 @@ export const Contact = () => {
 
             <button
               type="submit"
-              className="w-full text-white font-bold py-3 sm:py-4 px-6 rounded-xl transition-all hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-sm sm:text-base"
+              className="w-full text-white font-bold py-3 sm:py-4 px-6 min-h-[44px] rounded-xl transition-all hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-sm sm:text-base"
               style={{ backgroundColor: 'var(--edu-accent)' }}
             >
               <MdSend />
@@ -155,7 +154,7 @@ export const Contact = () => {
             <div className="bg-white p-6 rounded-2xl shadow-soft-xl text-center border-2"
               style={{ borderColor: 'var(--edu-lightest)' }}>
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                style={{ backgroundColor: 'rgba(231, 111, 81, 0.1)' }}>
+                style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
                 <MdSchedule className="text-3xl" style={{ color: 'var(--edu-accent)' }} />
               </div>
               <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--edu-darkest)' }}>
@@ -169,7 +168,7 @@ export const Contact = () => {
             <div className="bg-white p-6 rounded-2xl shadow-soft-xl text-center border-2"
               style={{ borderColor: 'var(--edu-lightest)' }}>
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                style={{ backgroundColor: 'rgba(163, 177, 138, 0.2)' }}>
+                style={{ backgroundColor: 'var(--edu-badge-bg)' }}>
                 <MdVerified className="text-3xl" style={{ color: 'var(--edu-mid)' }} />
               </div>
               <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--edu-darkest)' }}>
@@ -183,7 +182,7 @@ export const Contact = () => {
             <div className="bg-white p-6 rounded-2xl shadow-soft-xl text-center border-2"
               style={{ borderColor: 'var(--edu-lightest)' }}>
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                style={{ backgroundColor: 'rgba(244, 162, 97, 0.2)' }}>
+                style={{ backgroundColor: 'color-mix(in srgb, var(--edu-accent-light) 20%, transparent)' }}>
                 <MdSupportAgent className="text-3xl" style={{ color: 'var(--edu-accent-light)' }} />
               </div>
               <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--edu-darkest)' }}>

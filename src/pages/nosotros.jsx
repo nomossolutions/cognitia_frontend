@@ -26,7 +26,7 @@ export const Nosotros = () => {
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto max-w-6xl">
           
-          {/* Bloque 1 - Izquierda a derecha */}
+          {/* Bloque 1 */}
           <div className="mb-16 md:mb-24 flex flex-col md:flex-row gap-8 md:gap-12 items-center">
             <div className="md:w-1/2">
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" 
@@ -46,6 +46,9 @@ export const Nosotros = () => {
                 <img 
                   src="https://images.pexels.com/photos/9159067/pexels-photo-9159067.jpeg" 
                   alt="Educación en el aula"
+                  width="600"
+                  height="400"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                   style={{minHeight: '280px'}}
                 />
@@ -53,7 +56,7 @@ export const Nosotros = () => {
             </div>
           </div>
 
-          {/* Bloque 2 - Derecha a izquierda */}
+          {/* Bloque 2 */}
           <div className="mb-16 md:mb-24 flex flex-col md:flex-row-reverse gap-8 md:gap-12 items-center">
             <div className="md:w-1/2">
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" 
@@ -65,7 +68,7 @@ export const Nosotros = () => {
               </h2>
               <div className="w-20 h-1 mb-6" style={{backgroundColor: 'var(--edu-mid)'}}></div>
               <p className="text-base sm:text-lg leading-relaxed" style={{color: 'var(--edu-dark)'}}>
-                Así nació este proyecto: una herramienta pensada por docentes, para docentes. Creamos ejercicios automáticos en Matemáticas, Programación y Lengua Española para Extranjeros, con el objetivo de ahorrar tiempo sin perder calidad. Porque sabemos que cada minuto cuenta, y que la educación necesita soluciones ágiles, creativas y humanas (aunque estén potenciadas por IÁ).
+                Así nació este proyecto: una herramienta pensada por docentes, para docentes. Creamos ejercicios automáticos en Matemáticas, Programación y Lengua Española para Extranjeros, con el objetivo de ahorrar tiempo sin perder calidad. Porque sabemos que cada minuto cuenta, y que la educación necesita soluciones ágiles, creativas y humanas (aunque estén potenciadas por IA).
               </p>
             </div>
             <div className="md:w-1/2">
@@ -73,6 +76,9 @@ export const Nosotros = () => {
                 <img 
                   src="https://images.pexels.com/photos/5676744/pexels-photo-5676744.jpeg" 
                   alt="Docentes colaborando"
+                  width="600"
+                  height="400"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                   style={{minHeight: '280px'}}
                 />
@@ -80,7 +86,7 @@ export const Nosotros = () => {
             </div>
           </div>
 
-          {/* Bloque 3 - Izquierda a derecha */}
+          {/* Bloque 3 */}
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
             <div className="md:w-1/2">
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" 
@@ -103,6 +109,9 @@ export const Nosotros = () => {
                 <img 
                   src="https://images.pexels.com/photos/3768126/pexels-photo-3768126.jpeg" 
                   alt="Innovación educativa"
+                  width="600"
+                  height="400"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                   style={{minHeight: '280px'}}
                 />
@@ -173,7 +182,7 @@ export const Nosotros = () => {
             Empezá a crear ejercicios increíbles en minutos
           </p>
           <a href='/' 
-             className="inline-block px-8 py-4 rounded-xl font-bold text-lg text-white transition-all hover:scale-105 shadow-lg hover:shadow-xl"
+             className="inline-block px-8 py-4 min-h-[44px] rounded-xl font-bold text-lg text-white transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
              style={{backgroundColor: 'var(--edu-accent)'}}>
             Comenzar ahora
           </a>
