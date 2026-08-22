@@ -114,293 +114,307 @@ export const HomePage = () => {
         </div>
       </header>
 
-      {/* DISCIPLINAS */}
-      {/* DISCIPLINAS */}
-      <section id="disciplines" aria-labelledby="disciplines-heading" className="scroll-mt-20 py-8 sm:py-10 md:py-12 px-4 sm:px-6 lg:px-8 bg-pattern relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(218,215,205,0.2)_0%,transparent_50%)] pointer-events-none"></div>
+      {/* DISCIPLINAS — BOLDER PASS */}
+      <section id="disciplines" aria-labelledby="disciplines-heading" className="scroll-mt-20 py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 bg-pattern relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(218,215,205,0.3)_0%,transparent_55%)] pointer-events-none"></div>
+        <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full blur-[90px] pointer-events-none hidden lg:block" style={{ backgroundColor: 'var(--edu-glow-accent-subtle)' }}></div>
 
         <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="text-center mb-8 sm:mb-10">
-            <h2 id="disciplines-heading" className="text-h2-sm sm:text-h2 font-bold mb-3" style={{ color: 'var(--edu-darkest)' }}>
+          <div className="text-center mb-10 sm:mb-12 lg:mb-14">
+            <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-micro font-bold tracking-widest uppercase mb-4 border" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', color: 'var(--edu-accent)', borderColor: 'var(--edu-badge-border)' }}>16 materias · un mismo motor IA</p>
+            <h2 id="disciplines-heading" className="text-h1-sm sm:text-h1 font-extrabold tracking-tight leading-hero" style={{ color: 'var(--edu-darkest)' }}>
               Disciplinas Destacadas
             </h2>
-            <div className="h-1 w-24 sm:w-36 mx-auto" style={{ backgroundColor: 'var(--edu-mid)' }}></div>
+            <p className="text-body-sm sm:text-body mt-3 max-w-xl mx-auto" style={{ color: 'var(--edu-dark)' }}>Elige tu aula. Cada card abre un generador dedicado al nivel y formato que necesitas.</p>
+            <div className="h-1.5 w-36 mx-auto mt-5 rounded-full" style={{ backgroundColor: 'var(--edu-accent)' }}></div>
           </div>
 
-          {/* CIENCIAS */}
-          <div className="mb-8 sm:mb-10">
-            <h3 className="text-h3-sm sm:text-h3 font-bold mb-4 text-center" style={{ color: 'var(--edu-darkest)' }}>
-              <span className="inline-block border-b-2 pb-1" style={{ borderColor: 'var(--edu-accent)' }}>Ciencias Exactas y Naturales</span>
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          {/* CIENCIAS — verde mid */}
+          <div className="mb-10 sm:mb-12">
+            <div className="flex justify-center mb-5 sm:mb-6">
+              <h3 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-caption font-bold tracking-widest uppercase" style={{ backgroundColor: 'var(--edu-mid)', color: 'white', borderColor: 'var(--edu-mid)' }}>
+                <span className="w-1.5 h-1.5 rounded-full bg-white/80"></span>
+                Ciencias Exactas y Naturales
+              </h3>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
 
-              <NavLink to="/mathexercise" aria-label="Acceder a ejercicios de Matemáticas" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/mathexercise" aria-label="Acceder a ejercicios de Matemáticas" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiCalculator className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'color-mix(in srgb, var(--edu-mid) 12%, white)', borderColor: 'color-mix(in srgb, var(--edu-mid) 18%, transparent)', color: 'var(--edu-mid)' }}>
+                    <HiCalculator className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Matemáticas</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Matemáticas</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Aritmética, álgebra y cálculo avanzado con soluciones paso a paso.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-mid)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/physicexercise" aria-label="Acceder a ejercicios de Física" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/physicexercise" aria-label="Acceder a ejercicios de Física" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiBolt className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'color-mix(in srgb, var(--edu-mid) 12%, white)', borderColor: 'color-mix(in srgb, var(--edu-mid) 18%, transparent)', color: 'var(--edu-mid)' }}>
+                    <HiBolt className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Física</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Física</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Cinemática, dinámica y electromagnetismo con variables ajustables.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-mid)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/chemistryexercise" aria-label="Acceder a ejercicios de Química" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/chemistryexercise" aria-label="Acceder a ejercicios de Química" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiBeaker className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'color-mix(in srgb, var(--edu-mid) 12%, white)', borderColor: 'color-mix(in srgb, var(--edu-mid) 18%, transparent)', color: 'var(--edu-mid)' }}>
+                    <HiBeaker className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Química</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Química</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Reacciones químicas, estequiometría y tabla periódica.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-mid)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/biologyexercise" aria-label="Acceder a ejercicios de Biología" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/biologyexercise" aria-label="Acceder a ejercicios de Biología" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiSparkles className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'color-mix(in srgb, var(--edu-mid) 12%, white)', borderColor: 'color-mix(in srgb, var(--edu-mid) 18%, transparent)', color: 'var(--edu-mid)' }}>
+                    <HiSparkles className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Biología</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Biología</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Anatomía, genética, ecología y procesos biológicos.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-mid)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
             </div>
           </div>
 
-          {/* TECNOLOGÍA E INFORMÁTICA */}
-          <div className="mb-8 sm:mb-10">
-            <h3 className="text-h3-sm sm:text-h3 font-bold mb-4 text-center" style={{ color: 'var(--edu-darkest)' }}>
-              <span className="inline-block border-b-2 pb-1" style={{ borderColor: 'var(--edu-accent)' }}>Tecnología e Informática</span>
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+          {/* TECNOLOGÍA E INFORMÁTICA — darkest */}
+          <div className="mb-10 sm:mb-12">
+            <div className="flex justify-center mb-5 sm:mb-6">
+              <h3 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-caption font-bold tracking-widest uppercase" style={{ backgroundColor: 'var(--edu-darkest)', color: 'var(--edu-lightest)', borderColor: 'var(--edu-darkest)' }}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--edu-accent-light)' }}></span>
+                Tecnología e Informática
+              </h3>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
 
-              <NavLink to="/programmingexercise" aria-label="Acceder a ejercicios de Programación" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/programmingexercise" aria-label="Acceder a ejercicios de Programación" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiCodeBracket className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'var(--edu-darkest)', borderColor: 'var(--edu-darkest)', color: 'var(--edu-lightest)' }}>
+                    <HiCodeBracket className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Programación</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Programación</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Lógica, algoritmos y ejercicios de código en múltiples lenguajes.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-darkest)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/databaseexercise" aria-label="Acceder a ejercicios de Bases de Datos" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/databaseexercise" aria-label="Acceder a ejercicios de Bases de Datos" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiServer className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'var(--edu-darkest)', borderColor: 'var(--edu-darkest)', color: 'var(--edu-lightest)' }}>
+                    <HiServer className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Bases de Datos</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Bases de Datos</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Consultas SQL, modelado entidad-relación y optimización.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-darkest)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/networksexercise" aria-label="Acceder a ejercicios de Redes y Sistemas" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/networksexercise" aria-label="Acceder a ejercicios de Redes y Sistemas" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiCpuChip className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'var(--edu-darkest)', borderColor: 'var(--edu-darkest)', color: 'var(--edu-lightest)' }}>
+                    <HiCpuChip className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Sistemas y Redes</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Sistemas y Redes</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Protocolos de red, arquitectura de computadoras y SO.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-darkest)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
             </div>
           </div>
 
-          {/* HUMANIDADES */}
-          <div className="mb-8 sm:mb-10">
-            <h3 className="text-h3-sm sm:text-h3 font-bold mb-4 text-center" style={{ color: 'var(--edu-darkest)' }}>
-              <span className="inline-block border-b-2 pb-1" style={{ borderColor: 'var(--edu-accent)' }}>Humanidades</span>
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+          {/* HUMANIDADES — accent-light */}
+          <div className="mb-10 sm:mb-12">
+            <div className="flex justify-center mb-5 sm:mb-6">
+              <h3 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-caption font-bold tracking-widest uppercase" style={{ backgroundColor: 'color-mix(in srgb, var(--edu-accent-light) 18%, white)', color: 'var(--edu-darkest)', borderColor: 'color-mix(in srgb, var(--edu-accent-light) 28%, transparent)' }}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--edu-accent)' }}></span>
+                Humanidades
+              </h3>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
 
-              <NavLink to="/historyexercise" aria-label="Acceder a ejercicios de Historia" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/historyexercise" aria-label="Acceder a ejercicios de Historia" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiClock className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'color-mix(in srgb, var(--edu-accent-light) 14%, white)', borderColor: 'color-mix(in srgb, var(--edu-accent-light) 22%, transparent)', color: 'var(--edu-accent)' }}>
+                    <HiClock className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Historia</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Historia</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Eventos históricos, civilizaciones y procesos sociales.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-accent)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/geographyexercise" aria-label="Acceder a ejercicios de Geografía" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/geographyexercise" aria-label="Acceder a ejercicios de Geografía" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiGlobeAlt className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'color-mix(in srgb, var(--edu-accent-light) 14%, white)', borderColor: 'color-mix(in srgb, var(--edu-accent-light) 22%, transparent)', color: 'var(--edu-accent)' }}>
+                    <HiGlobeAlt className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Geografía</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Geografía</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Países, capitales, fenómenos naturales y mapas.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-accent)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/philosophyexercise" aria-label="Acceder a ejercicios de Filosofía" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/philosophyexercise" aria-label="Acceder a ejercicios de Filosofía" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <HiLightBulb className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: 'var(--edu-accent)' }} aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'color-mix(in srgb, var(--edu-accent-light) 14%, white)', borderColor: 'color-mix(in srgb, var(--edu-accent-light) 22%, transparent)', color: 'var(--edu-accent)' }}>
+                    <HiLightBulb className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Filosofía</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Filosofía</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Pensamiento crítico, lógica, ética y corrientes.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-accent)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
             </div>
           </div>
 
-          {/* IDIOMAS */}
+          {/* IDIOMAS — accent */}
           <div>
-            <h3 className="text-h3-sm sm:text-h3 font-bold mb-4 text-center" style={{ color: 'var(--edu-darkest)' }}>
-              <span className="inline-block border-b-2 pb-1" style={{ borderColor: 'var(--edu-accent)' }}>Idiomas</span>
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+            <div className="flex justify-center mb-5 sm:mb-6">
+              <h3 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-caption font-bold tracking-widest uppercase" style={{ backgroundColor: 'var(--edu-accent)', color: 'white', borderColor: 'var(--edu-accent)' }}>
+                <span className="w-1.5 h-1.5 rounded-full bg-white/80"></span>
+                Idiomas
+              </h3>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 lg:gap-6">
 
-              <NavLink to="/spanishexercise" aria-label="Acceder a ejercicios de Español" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/spanishexercise" aria-label="Acceder a ejercicios de Español" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <ES className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', borderColor: 'var(--edu-badge-border)', color: 'var(--edu-accent)' }}>
+                    <ES className="w-6 h-6 rounded-sm overflow-hidden" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Español</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Español</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Comprensión lectora y ejercicios de gramática.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-accent)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/italianexercise" aria-label="Acceder a ejercicios de Italiano" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/italianexercise" aria-label="Acceder a ejercicios de Italiano" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <IT className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', borderColor: 'var(--edu-badge-border)', color: 'var(--edu-accent)' }}>
+                    <IT className="w-6 h-6 rounded-sm overflow-hidden" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Italiano</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Italiano</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Vocabulario, gramática y ejercicios auditivos.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-accent)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/englishexercise" aria-label="Acceder a ejercicios de Inglés" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/englishexercise" aria-label="Acceder a ejercicios de Inglés" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <GB className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', borderColor: 'var(--edu-badge-border)', color: 'var(--edu-accent)' }}>
+                    <GB className="w-6 h-6 rounded-sm overflow-hidden" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Inglés</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Inglés</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Vocabulario, gramática y lectura interactiva.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-accent)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/portugueseexercise" aria-label="Acceder a ejercicios de Portugués" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/portugueseexercise" aria-label="Acceder a ejercicios de Portugués" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <PT className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', borderColor: 'var(--edu-badge-border)', color: 'var(--edu-accent)' }}>
+                    <PT className="w-6 h-6 rounded-sm overflow-hidden" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Portugués</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Portugués</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Ejercicios adaptados a variantes dialectales.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-accent)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
-              <NavLink to="/frenchexercise" aria-label="Acceder a ejercicios de Francés" className="focus-ring bg-white p-3.5 sm:p-4 md:p-5 rounded-xl hover:shadow-lg border card-transition shadow-soft-xl hover:shadow-float group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
+              <NavLink to="/frenchexercise" aria-label="Acceder a ejercicios de Francés" className="focus-ring bg-white p-5 sm:p-6 rounded-2xl border card-transition shadow-soft-xl hover:shadow-float hover:-translate-y-1 group flex flex-col justify-between" style={{ borderColor: 'var(--edu-card-border)' }}>
                 <div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}>
-                    <FR className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 border" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', borderColor: 'var(--edu-badge-border)', color: 'var(--edu-accent)' }}>
+                    <FR className="w-6 h-6 rounded-sm overflow-hidden" aria-hidden="true" />
                   </div>
-                  <h3 className="text-body-sm sm:text-body font-bold mb-1" style={{ color: 'var(--edu-darkest)' }}>Francés</h3>
-                  <p className="text-caption sm:text-body-sm leading-snug mb-3 line-clamp-2" style={{ color: 'var(--edu-dark)' }}>
+                  <h3 className="text-h3-sm font-extrabold tracking-tight leading-heading mb-2" style={{ color: 'var(--edu-darkest)' }}>Francés</h3>
+                  <p className="text-body-sm leading-body mb-2" style={{ color: 'var(--edu-dark)' }}>
                     Gramática y expresiones para todos los niveles.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-caption font-semibold group-hover:gap-2.5 transition-all" style={{ color: 'var(--edu-accent)' }}>
+                <div className="flex items-center gap-2 text-caption font-bold uppercase tracking-wider pt-3 mt-3 border-t group-hover:gap-3 transition-all" style={{ color: 'var(--edu-accent)', borderColor: 'var(--edu-card-border)' }}>
                   <span>Acceder</span>
-                  <MdArrowForward className="text-sm" aria-hidden="true" />
+                  <MdArrowForward className="text-base" aria-hidden="true" />
                 </div>
               </NavLink>
 
