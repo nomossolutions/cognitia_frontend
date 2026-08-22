@@ -85,22 +85,22 @@ const LevelButton = ({ level, selected, onClick, icon: Icon }) => (
     role="radio"
     aria-checked={selected}
     onClick={onClick}
-    className="flex flex-col items-center justify-center gap-1.5 p-2.5 min-h-[48px] rounded-2xl cursor-pointer transition-all duration-200 select-none group relative overflow-hidden"
+    className="flex flex-col items-center justify-center gap-2 p-3 min-h-[52px] rounded-2xl cursor-pointer transition-all duration-200 select-none group relative overflow-hidden"
     style={{
       backgroundColor: selected ? 'var(--edu-dark)' : 'var(--edu-surface-elevated)',
-      border: selected ? '1.5px solid var(--edu-dark)' : '1px solid var(--edu-card-border)',
-      boxShadow: selected ? '0 4px 14px -2px rgba(0,0,0,0.12)' : 'none',
-      transform: selected ? 'translateY(-1px)' : 'none'
+      border: selected ? '2px solid var(--edu-dark)' : '1px solid var(--edu-card-border)',
+      boxShadow: selected ? '0 10px 24px -8px rgba(52,78,65,0.22), 0 4px 12px -4px rgba(0,0,0,0.12)' : 'none',
+      transform: selected ? 'translateY(-1.5px)' : 'none'
     }}
   >
     {Icon && (
       <Icon
-        className="w-4 h-4 transition-transform duration-200 group-hover:scale-110"
-        style={{ color: selected ? 'var(--edu-accent)' : 'var(--edu-mid)' }}
+        className="w-5 h-5 transition-transform duration-200 group-hover:scale-110"
+        style={{ color: selected ? 'var(--edu-accent-light)' : 'var(--edu-mid)' }}
       />
     )}
     <span
-      className="text-caption font-semibold tracking-wide"
+      className="text-caption font-extrabold tracking-wide"
       style={{ color: selected ? '#ffffff' : 'var(--edu-darkest)' }}
     >
       {level}
@@ -109,16 +109,16 @@ const LevelButton = ({ level, selected, onClick, icon: Icon }) => (
 );
 
 const ExerciseTabs = ({ showPdfPreview, setShowPdfPreview }) => (
-  <div className="inline-flex p-1 gap-1 rounded-xl sm:rounded-2xl border" style={{ backgroundColor: 'var(--edu-soft-white)', borderColor: 'var(--edu-card-border)' }} role="tablist">
+  <div className="inline-flex p-1.5 gap-1 rounded-2xl border" style={{ backgroundColor: 'var(--edu-soft-white)', borderColor: 'var(--edu-card-border)' }} role="tablist">
     <button
       role="tab"
       aria-selected={!showPdfPreview}
       onClick={() => setShowPdfPreview(false)}
-      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-micro sm:text-caption font-bold transition-all duration-200 cursor-pointer"
+      className="flex items-center gap-1.5 sm:gap-2 px-4 py-2 rounded-xl text-caption font-extrabold tracking-wide transition-all duration-200 cursor-pointer"
       style={{
         backgroundColor: !showPdfPreview ? 'var(--edu-darkest)' : 'transparent',
         color: !showPdfPreview ? '#ffffff' : 'var(--edu-mid)',
-        boxShadow: !showPdfPreview ? '0 2px 8px rgba(0,0,0,0.08)' : 'none'
+        boxShadow: !showPdfPreview ? '0 4px 14px -6px rgba(0,0,0,0.18)' : 'none'
       }}
     >
       Vista Interactiva
@@ -127,11 +127,11 @@ const ExerciseTabs = ({ showPdfPreview, setShowPdfPreview }) => (
       role="tab"
       aria-selected={showPdfPreview}
       onClick={() => setShowPdfPreview(true)}
-      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-micro sm:text-caption font-bold transition-all duration-200 cursor-pointer"
+      className="flex items-center gap-1.5 sm:gap-2 px-4 py-2 rounded-xl text-caption font-extrabold tracking-wide transition-all duration-200 cursor-pointer"
       style={{
         backgroundColor: showPdfPreview ? 'var(--edu-darkest)' : 'transparent',
         color: showPdfPreview ? '#ffffff' : 'var(--edu-mid)',
-        boxShadow: showPdfPreview ? '0 2px 8px rgba(0,0,0,0.08)' : 'none'
+        boxShadow: showPdfPreview ? '0 4px 14px -6px rgba(0,0,0,0.18)' : 'none'
       }}
     >
       Vista PDF
@@ -220,17 +220,18 @@ export const ExercisePage = ({
           boxShadow: '4px 0 24px -2px rgba(0,0,0,0.03)'
         }}
       >
-        {/* Panel Header */}
-        <div className="flex flex-col gap-2 pb-3 border-b" style={{ borderColor: 'color-mix(in srgb, var(--edu-mid) 15%, transparent)' }}>
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center shadow-sm" style={{ backgroundColor: 'var(--edu-darkest)' }}>
-              <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+        {/* Panel Header — bolder */}
+        <div className="flex flex-col gap-2 pb-4 border-b" style={{ borderColor: 'color-mix(in srgb, var(--edu-mid) 15%, transparent)' }}>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shadow-sm border" style={{ backgroundColor: 'var(--edu-darkest)', borderColor: 'var(--edu-darkest)' }}>
+              <Icon className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-extrabold tracking-tight" style={{ color: 'var(--edu-darkest)' }}>{title}</h3>
+              <h3 className="text-h3 sm:text-h3 font-extrabold tracking-tight leading-hero" style={{ color: 'var(--edu-darkest)' }}>{title}</h3>
               <p className="text-micro uppercase tracking-widest font-bold mt-0.5" style={{ color: 'var(--edu-accent)' }}>Configuración IA</p>
             </div>
           </div>
+          <div className="h-1 w-12 rounded-full mt-1" style={{ backgroundColor: 'var(--edu-accent)' }}></div>
         </div>
 
         {/* Inputs */}
@@ -326,15 +327,15 @@ export const ExercisePage = ({
           </div>
         </div>
 
-        {/* Action Button */}
+        {/* Action Button — bolder */}
         <div className="mt-1">
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full font-bold py-3 px-4 rounded-xl transition-all duration-200 transform active:scale-[0.98] text-caption uppercase tracking-wider flex items-center justify-center gap-2 shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ backgroundColor: 'var(--edu-accent)', color: 'white' }}
+            className="group w-full font-extrabold py-3.5 px-4 rounded-xl transition-all duration-200 transform active:scale-[0.98] text-body-sm uppercase tracking-wider flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{ backgroundColor: 'var(--edu-accent)', color: 'white', boxShadow: '0 12px 28px -10px rgba(231,111,81,0.45), 0 4px 12px -4px rgba(52,78,65,0.15)' }}
           >
-            <HiSparkles className="w-4 h-4 animate-pulse" />
+            <HiSparkles className="w-5 h-5 animate-pulse group-hover:scale-110 transition-transform" />
             <span>{isLoading ? 'Generando...' : 'Generar Ejercicios'}</span>
           </button>
         </div>
@@ -361,36 +362,38 @@ export const ExercisePage = ({
       <section className="flex-1 p-4 sm:p-6 lg:p-8 flex flex-col lg:h-full lg:overflow-hidden min-w-0" style={{ backgroundColor: 'var(--edu-soft-white)' }}>
         <div className="max-w-4xl mx-auto w-full flex flex-col lg:h-full gap-3 sm:gap-4">
 
-          {/* Header Superior */}
-          <div className="flex items-center justify-between flex-wrap gap-2 shrink-0 pb-2 border-b" style={{ borderColor: 'var(--edu-card-border)' }}>
+          {/* Header Superior — bolder */}
+          <div className="flex items-center justify-between flex-wrap gap-3 shrink-0 pb-3 border-b" style={{ borderColor: 'var(--edu-card-border)' }}>
             <div>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-micro font-extrabold uppercase tracking-widest mb-1" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', color: 'var(--edu-accent)' }}>
-                <HiSparkles className="w-3 h-3" /> Motor Cognitia IA
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-micro font-bold tracking-widest uppercase mb-2 border" style={{ backgroundColor: 'var(--edu-glow-accent-soft)', color: 'var(--edu-accent)', borderColor: 'var(--edu-badge-border)' }}>
+                <HiSparkles className="w-3.5 h-3.5" /> Motor Cognitia IA
               </span>
-              <h2 className="text-xl sm:text-2xl font-black tracking-tight" style={{ color: 'var(--edu-darkest)' }}>
+              <h2 className="text-h2-sm sm:text-h1-sm font-extrabold tracking-tight leading-hero" style={{ color: 'var(--edu-darkest)' }}>
                 {title}
               </h2>
+              <p className="text-caption font-medium tracking-wide mt-1" style={{ color: 'var(--edu-mid)' }}>Listo para generar · {nivelSeleccionado} · {formatoSeleccionado === 'opcion_multiple' ? 'Opción Múltiple' : formatoSeleccionado === 'verdadero_falso' ? 'Verdadero/Falso' : formatoSeleccionado === 'completar' ? 'Completar' : 'Respuesta Libre'}</p>
             </div>
           </div>
 
-          {/* Tarjeta Contenedora Principal */}
+          {/* Tarjeta Contenedora Principal — bolder */}
           <div
-            className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 transition-all duration-300 border flex flex-col flex-1 min-h-0 overflow-hidden relative"
+            className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all duration-300 border flex flex-col flex-1 min-h-0 overflow-hidden relative"
             style={{
               backgroundColor: '#ffffff',
               borderColor: 'var(--edu-card-border)',
-              boxShadow: '0 20px 40px -15px rgba(0,0,0,0.05)'
+              boxShadow: '0 30px 60px -18px rgba(52,78,65,0.12), 0 12px 28px -12px rgba(0,0,0,0.06)'
             }}
           >
             {isLoading ? (
-              <div className="flex flex-col items-center justify-center my-auto py-8 sm:py-12" aria-live="polite">
-                <div className="relative w-12 h-12 mb-3">
-                  <div className="absolute inset-0 rounded-full border-3 border-t-transparent animate-spin" style={{ borderColor: 'var(--edu-accent)', borderTopColor: 'transparent' }}></div>
+              <div className="flex flex-col items-center justify-center my-auto py-10 sm:py-14" aria-live="polite">
+                <div className="relative w-14 h-14 mb-4">
+                  <div className="absolute inset-0 rounded-full blur-[10px]" style={{ backgroundColor: 'var(--edu-glow-accent-soft)' }}></div>
+                  <div className="absolute inset-0 rounded-full border-[3px] border-t-transparent animate-spin" style={{ borderColor: 'var(--edu-accent)', borderTopColor: 'transparent' }}></div>
                 </div>
-                <p className="font-bold text-body-sm" style={{ color: 'var(--edu-darkest)' }}>
+                <p className="font-extrabold text-body tracking-tight" style={{ color: 'var(--edu-darkest)' }}>
                   Sintetizando ejercicios...
                 </p>
-                <p className="text-caption font-medium mt-0.5" style={{ color: 'var(--edu-mid)' }}>Optimizando según el nivel educativo</p>
+                <p className="text-body-sm font-medium mt-1" style={{ color: 'var(--edu-mid)' }}>Optimizando según el nivel educativo</p>
               </div>
             ) : ejercicios ? (
               <>
@@ -431,14 +434,17 @@ export const ExercisePage = ({
                 </div>
               </>
             ) : (
-              <div className="text-center my-auto py-8 sm:py-12 flex flex-col items-center">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl mb-3 flex items-center justify-center shadow-inner" style={{ backgroundColor: 'var(--edu-glow-accent-subtle)' }}>
-                  <Icon className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: 'var(--edu-accent)' }} />
+              <div className="text-center my-auto py-6 sm:py-8 flex flex-col items-center">
+                <div className="w-16 h-16 rounded-3xl mb-4 flex items-center justify-center shadow-soft-xl border" style={{ backgroundColor: '#ffffff', borderColor: 'var(--edu-card-border)' }}>
+                  <Icon className="w-8 h-8" style={{ color: 'var(--edu-accent)' }} />
                 </div>
-                <h4 className="font-bold text-base mb-0.5" style={{ color: 'var(--edu-darkest)' }}>Panel de Vista Previa</h4>
-                <p className="text-caption max-w-xs font-medium" style={{ color: 'var(--edu-mid)' }}>
-                  Completa los parámetros del panel izquierdo y presiona <strong style={{ color: 'var(--edu-darkest)' }}>Generar Ejercicios</strong>.
+                <h4 className="font-extrabold text-h2-sm sm:text-h2 tracking-tight leading-hero" style={{ color: 'var(--edu-darkest)' }}>Completa tu configuración</h4>
+                <p className="text-body-sm max-w-sm font-medium leading-body mt-2" style={{ color: 'var(--edu-mid)' }}>
+                  Ajusta tema, nivel y formato en el panel izquierdo y presiona <strong style={{ color: 'var(--edu-darkest)' }}>Generar Ejercicios</strong>.
                 </p>
+                <div className="w-full max-w-sm mt-6 h-24 rounded-2xl border-2 border-dashed flex items-center justify-center px-4" style={{ backgroundColor: 'var(--edu-glow-accent-subtle)', borderColor: 'color-mix(in srgb, var(--edu-accent) 18%, transparent)' }}>
+                  <span className="text-caption font-bold tracking-widest uppercase" style={{ color: 'var(--edu-accent)' }}>1 tema · 1 nivel · Generar</span>
+                </div>
               </div>
             )}
           </div>
